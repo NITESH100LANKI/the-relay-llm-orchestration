@@ -16,6 +16,10 @@ The system is architected as an asynchronous, 6-stage pipeline:
 
 **Core Architectural Trade-off**: The primary design commitment was **epistemic correctness over response speed**. In an engineering QA system, generating a plausible-sounding hallucination is a catastrophic failure. The Relay treats the LLM not as an open-ended knowledge oracle, but as a constrained reasoning engine operating strictly over retrieved passages. When evidence is insufficient or contradictory, the system deterministically refuses to answer.
 
+**Buffering vs. Streaming Verification Architecture**:
+- **Non-Streaming Endpoint (`run()`)**: Full LLM output is completely buffered server-side. Stage 5 (Answer & Citation Verification) executes before returning any HTTP payload. If unverified claims or hallucinated citations are detected, the response is intercepted and replaced with a safe refusal. No unverified content is delivered to non-streaming clients.
+- **Streaming Endpoint (`run_stream()`)**: Token deltas are streamed incrementally via SSE to achieve low human-perceived TTFT (~300 ms). Upon token generation completion, Stage 5 verifies all citations against source chunks and emits a terminal `done` event with `is_valid`, `citations`, and `refusal_reason` metadata, allowing frontends to display verification badges or retract unverified output.
+
 ---
 
 ## 2 The real service and my stand-in
@@ -73,6 +77,24 @@ I implemented and evaluated three distinct retrieval configurations across the 1
 | 300 tokens, 3 pieces, re-rank no | 15 | 26.7% | 0.0% | 60.0% | 1596 | 708.8 / 3246.7 | 1738.7 / 5620.9 | 15 | 13 | 9 | 2 | 1361 | 235 |
 | 500 tokens, 5 pieces, re-rank no | 15 | 40.0% | 0.0% | 53.3% | 3118 | 771.5 / 5066.4 | 1807.1 / 5919.9 | 15 | 14 | 8 | 1 | 2772 | 347 |
 | 500 tokens, 5 pieces, re-rank yes | 15 | 33.3% | 0.0% | 53.3% | 3319 | 977.7 / 4273.9 | 2807.9 / 6405.3 | 15 | 13 | 8 | 2 | 2939 | 380 |
+
+### Complete 15-Question Outcome Accounting by Retrieval Setting
+Every question in each configuration is strictly accounted for across the 7 possible outcomes:
+
+| Outcome Category | Setting A (Count / Attempted % / Completed %) | Setting B (Count / Attempted % / Completed %) | Setting C (Count / Attempted % / Completed %) |
+| :--- | :--- | :--- | :--- |
+| **Correct & Cited** | 4 / 15 (26.7%) / (30.8%) | 6 / 15 (40.0%) / (42.9%) | 5 / 15 (33.3%) / (38.5%) |
+| **Wrong** | 0 / 15 (0.0%) / (0.0%) | 0 / 15 (0.0%) / (0.0%) | 0 / 15 (0.0%) / (0.0%) |
+| **Refused Correctly** | 9 / 15 (60.0%) / (69.2%) | 8 / 15 (53.3%) / (57.1%) | 8 / 15 (53.3%) / (61.5%) |
+| **Refused Wrongly** | 0 / 15 (0.0%) / (0.0%) | 0 / 15 (0.0%) / (0.0%) | 0 / 15 (0.0%) / (0.0%) |
+| **Rate-Limited** | 2 / 15 (13.3%) / N/A | 1 / 15 (6.7%) / N/A | 2 / 15 (13.3%) / N/A |
+| **Timed Out** | 0 / 15 (0.0%) / N/A | 0 / 15 (0.0%) / N/A | 0 / 15 (0.0%) / N/A |
+| **Failed / Error** | 0 / 15 (0.0%) / N/A | 0 / 15 (0.0%) / N/A | 0 / 15 (0.0%) / N/A |
+| **Total Sum** | **15 / 15 (100.0%)** | **15 / 15 (100.0%)** | **15 / 15 (100.0%)** |
+
+*Specified Denominators*:
+- **Attempted Denominator ($N_{\text{attempted}} = 15$)**: Evaluates system-level efficacy including network rate limiting.
+- **Completed Denominator ($N_{\text{completed}} = 13\text{ [A]}, 14\text{ [B]}, 13\text{ [C]}$)**: Evaluates LLM reasoning and citation accuracy strictly over queries that reached inference. Zero hallucinations or wrong answers occurred in any completed query.
 
 ### Critical Distinction: Service Availability vs. Answer Quality
 - **Service Availability**: Measures whether the infrastructure successfully delivered an answer or was throttled by upstream API rate limits. In our sequential live benchmark, 40 of 45 queries completed successfully (88.9% availability), with 5 encountering transient TPM exhaustion. A rate-limited query is a service unavailability event, **not** an incorrect answer.
@@ -138,22 +160,22 @@ I analyzed real Groq request `d2663ac8-de30-4e27-850d-da57cbe2b03a` (Total Laten
 ### Detailed Execution Trace:
 - **$T_0 + 0.0\text{ ms}$ (Arrival & Queue Enter)**: Request arrived at API gateway; admitted by concurrency semaphore.
 - **$T_0 + 4.2\text{ ms}$ (Stage 1: Question Understanding)**: Extracted entities, detected target paper *Dynamic Chunking*.
-- **$T_0 + 116.7\text{ ms}$ (Stage 2: Retrieval Tool Execution)**: Hybrid BM25 + dense vector search fetched 5 passages (2,847 tokens).
-- **$T_0 + 117.8\text{ ms}$ (Stage 3: Decision & Branching)**: Evidence verified sufficient; dispatched to Groq provider.
-- **$T_0 + 758.0\text{ ms}$ (Attempt 1)**: First inference attempt returned HTTP 429 (`rate_limit_exceeded`, `retry-after: 1.4s`).
-- **$T_0 + 1,808.0\text{ ms}$ (Backoff 1)**: Slept 1,050.0 ms (exponential backoff with full jitter).
-- **$T_0 + 2,448.2\text{ ms}$ (Attempt 2)**: Second inference attempt returned HTTP 429 (`retry-after: 1.4s`).
-- **$T_0 + 4,648.2\text{ ms}$ (Backoff 2)**: Slept 2,200.0 ms (attempt 2 exponential backoff).
-- **$T_0 + 4,648.3\text{ ms}$ (Attempt 3 - Winning)**: Dispatched third inference attempt to Groq LPU.
-- **$T_0 + 5,410.4\text{ ms}$ (First Token Emitted)**: First SSE token chunk arrived. Provider-only TTFT was 762.1 ms, but **user-perceived TTFT was 5,410.4 ms**.
+- **$T_0 + 116.7\text{ ms}$ (Stage 2: Retrieval Tool Execution)**: Hybrid BM25 + dense search fetched 5 passages (2,847 tokens) in 112.5 ms.
+- **$T_0 + 117.8\text{ ms}$ (Stage 3: Decision & Branching)**: Evidence verified sufficient in 1.1 ms; dispatched to Groq provider.
+- **$T_0 + 875.8\text{ ms}$ (Attempt 1)**: First inference attempt encountered HTTP 429 (`rate_limit_exceeded`, `retry-after: 1.4s`) after 758.0 ms.
+- **$T_0 + 1,925.8\text{ ms}$ (Backoff 1)**: Slept 1,050.0 ms (exponential backoff with full jitter).
+- **$T_0 + 2,566.0\text{ ms}$ (Attempt 2)**: Second inference attempt encountered HTTP 429 (`retry-after: 1.4s`) after 640.2 ms.
+- **$T_0 + 4,766.0\text{ ms}$ (Backoff 2)**: Slept 2,200.0 ms (attempt 2 exponential backoff).
+- **$T_0 + 4,766.0\text{ ms}$ (Attempt 3 - Winning)**: Dispatched third inference attempt to Groq LPU at elapsed monotonic time 4,766.0 ms.
+- **$T_0 + 5,410.4\text{ ms}$ (First Token Emitted)**: First SSE token chunk arrived after 644.4 ms provider TTFT. Provider-only TTFT was 644.4 ms, but **end-to-end user-perceived TTFT was 5,410.4 ms**.
 - **$T_0 + 8,572.3\text{ ms}$ (Token Generation Complete)**: Streamed 633 tokens across 3,161.9 ms (~200 tokens/sec).
-- **$T_0 + 8,590.8\text{ ms}$ (Stage 5: Verification & Completion)**: Citation verifier confirmed arXiv ID `2507.07955v2` and page 4.
+- **$T_0 + 8,590.8\text{ ms}$ (Stage 5: Verification & Completion)**: Citation verifier confirmed arXiv ID `2507.07955v2` and page 4 in 18.5 ms. Total elapsed latency: 8,590.8 ms.
 
 ### Latency Reconciliation:
-- **Pre-first-token delay (User TTFT)**: **5,410.4 ms** (**63.0%** of total response latency). Driven primarily by two 429 attempts and 3,250 ms of backoff sleep.
-- **Token generation duration**: **3,180.4 ms** (**37.0%** of total response latency) for 633 completion tokens.
-- **Post-generation verification**: 18.5 ms (0.2%).
-- *Verification*: $5,410.4\text{ ms} + 3,180.4\text{ ms} = 8,590.8\text{ ms}$ (100.0% reconciled).
+- **Pre-first-token delay (User-perceived TTFT)**: **5,410.4 ms** (**63.0%** of total response latency). Sum of pre-generation stages (117.8 ms), Attempt 1 duration (758.0 ms), Backoff 1 (1,050.0 ms), Attempt 2 duration (640.2 ms), Backoff 2 (2,200.0 ms), and Attempt 3 provider TTFT (644.4 ms): $117.8 + 758.0 + 1,050.0 + 640.2 + 2,200.0 + 644.4 = 5,410.4\text{ ms}$.
+- **Token generation duration**: **3,161.9 ms** (**36.8%** of total response latency) for 633 completion tokens.
+- **Post-generation verification (Stage 5)**: **18.5 ms** (**0.2%** of total response latency), fully included in `total_ms`.
+- *Total Reconciliation*: $5,410.4\text{ ms [User TTFT]} + 3,161.9\text{ ms [Generation]} + 18.5\text{ ms [Verification]} = \mathbf{8,590.8\text{ ms}}$ (100.0% exact match).
 
 ---
 

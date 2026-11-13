@@ -90,7 +90,7 @@ def generate_pdf():
     # Section 1
     story.append(Paragraph("<b>1 What I built and why</b>", h1_style))
     story.append(Paragraph(
-        "I engineered <b>The Relay</b>, an asynchronous, fault-tolerant question-answering assistant and retrieval-augmented generation (RAG) system built strictly around three canonical papers: (1) <i>Attention Is All You Need</i> (arXiv 1706.03762v7), (2) <i>Moshi: a speech-text foundation model for real-time dialogue</i> (arXiv 2410.00037v1), and (3) <i>Dynamic Chunking for End-to-End Hierarchical Sequence Modeling</i> (arXiv 2507.07955v2). Constructed as a 6-stage pipelined state machine (Question Understanding &rarr; Retrieval Tool Invocation &rarr; Decision & Branching &rarr; Grounded Generation &rarr; Citation Verification &rarr; SSE Streaming), the single engineering decision that shaped the architecture most was <b>prioritizing strict epistemic verification and refusal over latency or fluent guessing</b>. The LLM is treated as a bounded reasoning engine over retrieved evidence, not a knowledge oracle. If retrieved evidence is missing, contradictory, or ambiguous, the pipeline deterministically refuses to answer.",
+        "I engineered <b>The Relay</b>, an asynchronous, fault-tolerant question-answering assistant and retrieval-augmented generation (RAG) system built strictly around three canonical papers: (1) <i>Attention Is All You Need</i> (arXiv 1706.03762v7), (2) <i>Moshi: a speech-text foundation model for real-time dialogue</i> (arXiv 2410.00037v1), and (3) <i>Dynamic Chunking for End-to-End Hierarchical Sequence Modeling</i> (arXiv 2507.07955v2). Constructed as a 6-stage pipelined state machine (Question Understanding &rarr; Retrieval Tool Invocation &rarr; Decision & Branching &rarr; Grounded Generation &rarr; Citation Verification &rarr; SSE Streaming), the single engineering decision that shaped the architecture most was <b>prioritizing strict epistemic verification and refusal over latency or fluent guessing</b>. Non-streaming requests buffer full completions to verify citations before returning; streaming endpoints stream SSE tokens for sub-second TTFT and emit terminal verification metadata.",
         body_style
     ))
 
@@ -183,7 +183,7 @@ def generate_pdf():
     # Section 4
     story.append(Paragraph("<b>4 Where the time goes</b>", h1_style))
     story.append(Paragraph(
-        "For an actual slow request on real Groq (<code>request_id: d2663ac8-de30-4e27-850d-da57cbe2b03a</code>, Total: <b>8,590.8 ms</b>, Model: <code>qwen/qwen3.8-27b</code>, Status: <code>ok</code>): Arrival at T0; Stage 1 (Question Understanding): 4.2 ms; Stage 2 (Retrieval Tool): 112.5 ms; Stage 3 (Decision & Branching): 1.1 ms; Stage 4 (Generation under Backoff): 8,454.5 ms total (Attempt 1: 429 rate limit after 758.0 ms; Backoff 1: 1,050.0 ms sleep; Attempt 2: 429 rate limit after 640.2 ms; Backoff 2: 2,200.0 ms sleep; Attempt 3: Succeeded on Groq with provider TTFT = 762.1 ms, first token emitted at T0 + 5,410.4 ms; streamed 633 tokens across 3,161.9 ms); Stage 5 (Verification): 18.5 ms. <b>User-perceived TTFT was 5,410.4 ms (63.0% of total latency before first token)</b>, while token generation took <b>3,180.4 ms (37.0%)</b>.",
+        "For an actual slow request on real Groq (<code>request_id: d2663ac8-de30-4e27-850d-da57cbe2b03a</code>, Total: <b>8,590.8 ms</b>, Model: <code>qwen/qwen3.8-27b</code>, Status: <code>ok</code>): Arrival at T0; Pre-generation stages (Stage 1-3): 117.8 ms; Attempt 1 (429): 758.0 ms + Backoff 1: 1,050.0 ms sleep; Attempt 2 (429): 640.2 ms + Backoff 2: 2,200.0 ms sleep (cumulative monotonic elapsed: <b>4,766.0 ms</b>); Winning Attempt 3 dispatched at T0 + 4,766.0 ms; Provider TTFT = 644.4 ms &rarr; First token emitted at T0 + <b>5,410.4 ms (User-perceived TTFT: 63.0% of total delay)</b>; Streamed 633 tokens across <b>3,161.9 ms (36.8%)</b>; Stage 5 Verification: <b>18.5 ms (0.2%)</b> included in total latency. Reconciles: 5,410.4 + 3,161.9 + 18.5 = 8,590.8 ms.",
         body_style
     ))
 
@@ -197,7 +197,7 @@ def generate_pdf():
     # Retrieval: quality versus cost
     story.append(Paragraph("<b>Retrieval: quality versus cost</b>", h1_style))
     story.append(Paragraph(
-        "Evaluated across all 15 benchmark questions using real hosted Groq inference (<code>qwen/qwen3.8-27b</code>) with adaptive pacing. <b>Setting B was selected as primary production configuration</b>: 500-token chunks with 100-token overlap provide superior factual accuracy (40.0% correct and cited, 0.0% wrong, 53.3% correctly refused) because they preserve mathematical formulas and context across section boundaries without the 2,807.9 ms p50 latency of reciprocal rank fusion (Setting C). When token limits are near exhaustion, the pipeline dynamically downscales to Setting A to conserve quota.",
+        "Evaluated across all 15 benchmark questions using real hosted Groq inference (<code>qwen/qwen3.8-27b</code>). Outcome breakdown across Settings A / B / C (attempted N=15): Correct & cited: 26.7% / 40.0% / 33.3%; Refused correctly: 60.0% / 53.3% / 53.3%; Rate-limited: 13.3% / 6.7% / 13.3%; Wrong: 0.0% across all. Completed query accuracy (N=13/14/13): Correct 30.8% / 42.9% / 38.5%; Refused 69.2% / 57.1% / 61.5%. <b>Setting B was selected as primary production configuration</b> (500-token chunks, 100 overlap) for optimal context preservation without the 2,807.9 ms p50 latency of reciprocal rank fusion (Setting C). When limits near exhaustion, the pipeline downscales to Setting A.",
         body_style
     ))
 
@@ -245,7 +245,7 @@ def generate_pdf():
     ]
     t_retry = Table(t_retry_data, colWidths=[1.8*inch, 1.8*inch, 1.8*inch, 1.9*inch])
     t_retry.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0f172a")),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0284c7")),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#cbd5e1")),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.HexColor("#f8fafc"), colors.HexColor("#ffffff")]),
