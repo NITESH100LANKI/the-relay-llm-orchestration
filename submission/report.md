@@ -16,9 +16,12 @@ The system is architected as an asynchronous, 6-stage pipeline:
 
 **Core Architectural Trade-off**: The primary design commitment was **epistemic correctness over response speed**. In an engineering QA system, generating a plausible-sounding hallucination is a catastrophic failure. The Relay treats the LLM not as an open-ended knowledge oracle, but as a constrained reasoning engine operating strictly over retrieved passages. When evidence is insufficient or contradictory, the system deterministically refuses to answer.
 
-**Buffering vs. Streaming Verification Architecture**:
-- **Non-Streaming Endpoint (`run()`)**: Full LLM output is completely buffered server-side. Stage 5 (Answer & Citation Verification) executes before returning any HTTP payload. If unverified claims or hallucinated citations are detected, the response is intercepted and replaced with a safe refusal. No unverified content is delivered to non-streaming clients.
-- **Streaming Endpoint (`run_stream()`)**: Token deltas are streamed incrementally via SSE to achieve low human-perceived TTFT (~300 ms). Upon token generation completion, Stage 5 verifies all citations against source chunks and emits a terminal `done` event with `is_valid`, `citations`, and `refusal_reason` metadata, allowing frontends to display verification badges or retract unverified output.
+**Pre-Delivery Verification Architecture & The Latency Trade-Off**:
+To strictly honor the assignment requirement that answers are verified before sending them, **all LLM output is buffered internally before client delivery in both non-streaming and streaming modes**:
+- **Stage 4 (Buffered Generation)**: The pipeline accumulates LLM completion chunks internally while recording provider-side TTFT.
+- **Stage 5 (Pre-Delivery Verification)**: Citation parsing and factual grounding verification execute against retrieved paper passages *before* any content reaches the client.
+- **Stage 6 (Verified Streaming Delivery)**: If verification passes, the verified text is streamed incrementally via SSE. If verification fails or hallucinated citations are detected, the generated text is intercepted and replaced with a deterministic epistemic refusal before any tokens are transmitted.
+- **The Engineering Trade-off**: This architecture guarantees that **no unverified or hallucinated content reaches the user**. User-visible TTFT therefore includes retrieval, generation, and verification latency, cleanly distinguished from provider-only TTFT.
 
 ---
 

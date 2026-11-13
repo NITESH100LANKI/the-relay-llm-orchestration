@@ -173,3 +173,91 @@ def test_tables_reconciliation():
     assert rows["Total API Calls Made"]["Retries Disabled (max_retries=0)"] == "25"
     assert rows["Number of 429s Encountered"]["Retries Enabled (max_retries=2)"] == "66"
     assert rows["Number of 429s Encountered"]["Retries Disabled (max_retries=0)"] == "22"
+
+
+@pytest.mark.asyncio
+async def test_streaming_buffering_and_verification_before_delivery():
+    """Verify that in run_stream(), deltas are emitted ONLY after answer_verification has passed."""
+    from app.pipeline.orchestrator import PipelineOrchestrator
+    from app.providers.simulator_provider import SimulatorProvider, SimulatorConfig
+    from app.schemas.models import AskRequest
+
+    provider = SimulatorProvider(SimulatorConfig(base_ttft_ms=20.0, token_generation_ms=1.0))
+    orchestrator = PipelineOrchestrator(provider=provider)
+    req = AskRequest(question="What is the Mimi audio codec in Moshi?", retrieval_setting="B", stream=True)
+
+    events = []
+    seen_stages = []
+    deltas_before_verification = []
+
+    async for item in orchestrator.execute_stream(req):
+        events.append(item)
+        if item["type"] == "stage":
+            seen_stages.append(item["stage"])
+        elif item["type"] == "delta":
+            if "answer_verification" not in seen_stages:
+                deltas_before_verification.append(item["delta"])
+
+    assert "answer_verification" in seen_stages, "answer_verification stage must execute"
+    assert len(deltas_before_verification) == 0, f"Unverified deltas leaked to client: {deltas_before_verification}"
+
+    done_event = next((e for e in events if e["type"] == "done"), None)
+    assert done_event is not None, "done event must be yielded"
+    res = done_event["result"]
+    assert res["status"] == "ok"
+    assert res["first_token_ms"] is not None
+    assert res["provider_ttft_ms"] is not None
+    assert res["first_token_ms"] >= res["provider_ttft_ms"], "User TTFT must include verification latency"
+
+
+@pytest.mark.asyncio
+async def test_streaming_unverified_content_refusal():
+    """Verify that an unverified or hallucinated answer is completely withheld and replaced with deterministic refusal."""
+    from app.pipeline.orchestrator import PipelineOrchestrator
+    from app.providers.base import LLMProvider, ProviderResponse
+    from app.schemas.models import AskRequest
+
+    class MockHallucinatingProvider(LLMProvider):
+        def __init__(self):
+            super().__init__()
+            self.model_id = "mock_hallucinator"
+            self.source = "stand-in"
+
+        async def generate(self, prompt: str, system_prompt: str = "") -> ProviderResponse:
+            return ProviderResponse(
+                content="The model costs $999,999 to train. [Citation: Attention, arXiv 1706.03762v7, Page 99, Section Secret]",
+                status="ok",
+                first_token_ms=50.0,
+                total_ms=100.0,
+                tokens_in=100,
+                tokens_out=20,
+                source="stand-in"
+            )
+
+        async def generate_stream(self, prompt: str, system_prompt: str = ""):
+            yield {"delta": "The model costs $999,999 ", "done": False, "response": None}
+            yield {"delta": "to train. [Citation: Attention, arXiv 1706.03762v7, Page 99, Section Secret]", "done": True, "response": await self.generate(prompt, system_prompt)}
+
+    provider = MockHallucinatingProvider()
+    orchestrator = PipelineOrchestrator(provider=provider)
+    req = AskRequest(question="What is Scaled Dot-Product Attention?", retrieval_setting="A", stream=True)
+
+    streamed_text = ""
+    events = []
+    async for item in orchestrator.execute_stream(req):
+        events.append(item)
+        if item["type"] == "delta":
+            streamed_text += item["delta"]
+
+    # Verify that hallucinated text was NEVER streamed to client
+    assert "$999,999" not in streamed_text, "Hallucinated monetary figure leaked to client"
+    assert "Section Secret" not in streamed_text, "Invalid citation leaked to client"
+
+    # Verify that client received deterministic safe refusal
+    assert "insufficient verified evidence" in streamed_text, "Client must receive safe refusal"
+    done_event = next((e for e in events if e["type"] == "done"), None)
+    assert done_event is not None
+    assert done_event["result"]["refused"] is True
+    assert done_event["result"]["answer_grade"] == "wrong"
+
+

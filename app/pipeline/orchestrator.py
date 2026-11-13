@@ -12,6 +12,7 @@ Executes the full 6-stage AI workflow:
 import time
 import uuid
 import asyncio
+import re
 from typing import AsyncGenerator, Dict, Any, Optional, List
 
 from app.schemas.models import (
@@ -398,7 +399,7 @@ class PipelineOrchestrator:
                 }
                 return
 
-            # Stage 4: Streaming Generation
+            # Stage 4: Generation with Internal Buffering
             yield {"type": "stage", "stage": "answer_generation"}
             context_blocks = [
                 f"--- Passage from '{p.paper_title}' (arXiv {p.arxiv_id}{p.version}), Page {p.page_number}, Section: {p.section} ---\n{p.text}"
@@ -408,14 +409,14 @@ class PipelineOrchestrator:
 
             full_content = ""
             final_resp: Optional[ProviderResponse] = None
-            stream_first_token_ms: Optional[float] = None
+            provider_first_token_ms: Optional[float] = None
 
+            # Buffer complete LLM generation internally without streaming unverified tokens to the client
             async for chunk in self.provider.generate_stream(prompt=user_prompt, system_prompt=SYSTEM_PROMPT):
                 if chunk["delta"]:
-                    if stream_first_token_ms is None:
-                        stream_first_token_ms = (time.perf_counter() - t_global_start) * 1000.0
+                    if provider_first_token_ms is None:
+                        provider_first_token_ms = (time.perf_counter() - t_global_start) * 1000.0
                     full_content += chunk["delta"]
-                    yield {"type": "delta", "delta": chunk["delta"]}
                 if chunk["done"] and chunk["response"]:
                     final_resp = chunk["response"]
 
@@ -441,7 +442,7 @@ class PipelineOrchestrator:
                 }
                 return
 
-            # Stage 5: Answer Verification
+            # Stage 5: Answer & Citation Verification Runs on Buffered Response BEFORE Client Delivery
             yield {"type": "stage", "stage": "answer_verification"}
             is_valid, valid_citations, refusal_reason, grade = verify_answer(
                 final_resp.content,
@@ -449,21 +450,41 @@ class PipelineOrchestrator:
                 is_expected_unanswerable=(understanding.complexity == "unanswerable")
             )
 
+            refused = is_refusal(final_resp.content) or not is_valid
+            if not is_valid and not is_refusal(final_resp.content):
+                # Unverified claims or invalid citations are replaced with a deterministic refusal
+                verified_answer = (
+                    "Based on the retrieved research papers, there is insufficient verified evidence to answer this question. "
+                    "The generated claims could not be verified against the source citations."
+                )
+                refused = True
+                grade = "wrong"
+            else:
+                verified_answer = final_resp.content
+
+            # Stage 6: Stream ONLY Verified Answer Content to Client via SSE
+            user_first_token_ms = (time.perf_counter() - t_global_start) * 1000.0
+
+            # Stream verified content incrementally to client
+            words = re.findall(r'\S+|\s+', verified_answer)
+            for word in words:
+                yield {"type": "delta", "delta": word}
+
             total_ms = (time.perf_counter() - t_global_start) * 1000.0
             await reliability_mgr.record_outcome("ok", retries=0)
 
             result = PipelineResult(
                 request_id=req_id,
                 question=request.question,
-                answer=final_resp.content,
+                answer=verified_answer,
                 citations=valid_citations,
-                refused=is_refusal(final_resp.content) or not is_valid,
+                refused=refused,
                 refusal_reason=refusal_reason,
                 retrieved_passages=passages,
                 tokens_in=final_resp.tokens_in,
                 tokens_out=final_resp.tokens_out,
-                first_token_ms=round(stream_first_token_ms, 1) if stream_first_token_ms else None,
-                provider_ttft_ms=round(final_resp.first_token_ms, 1) if final_resp.first_token_ms else None,
+                first_token_ms=round(user_first_token_ms, 1),
+                provider_ttft_ms=round(final_resp.first_token_ms, 1) if final_resp.first_token_ms else (round(provider_first_token_ms, 1) if provider_first_token_ms else None),
                 total_ms=total_ms,
                 queue_wait_ms=queue_wait_ms,
                 retries=0,
