@@ -1,0 +1,8 @@
+Limit,Value you found,How you found it,"Confidence (high, medium, low)"
+Requests per minute (RPM),30 RPM,Official Groq Developer-plan documentation; enforced via sliding rate window,high
+Tokens per minute (TPM),"8,000 TPM",Live HTTP response header 'x-ratelimit-limit-tokens: 8000' verified on live inference,high
+Requests per day (RPD),"1,000 RPD",Live HTTP response header 'x-ratelimit-limit-requests: 1000' representing daily account budget,high
+Tokens per day (TPD),"200,000 TPD",Official Groq Developer-plan console rate limits for qwen/qwen3.8-27b,high
+Requests in flight at once (Concurrency),5 concurrent requests,Application-level semaphore backpressure setting (RELAY_MAX_CONCURRENCY=5) to prevent burst 429s,high
+What it returns when a limit is hit,"HTTP 429 Too Many Requests; JSON code 'rate_limit_exceeded'; headers x-ratelimit-remaining-*, x-ratelimit-reset-*, retry-after",Observed on real Groq 429 burst responses and verified in error handlers,high
+Time until it recovers,1.4s–50s for TPM token reset (x-ratelimit-reset-tokens); 1m26s–2m52s for RPM requests; 00:00 UTC for RPD,Parsed dynamic live HTTP headers 'x-ratelimit-reset-tokens' and 'x-ratelimit-reset-requests',high

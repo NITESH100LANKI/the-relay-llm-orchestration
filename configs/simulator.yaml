@@ -1,0 +1,27 @@
+# Simulator Configuration for The Relay
+# Calibrated against Groq LPU inference metrics (llama-3.3-70b-versatile / llama-3.1-8b-instant)
+
+latency:
+  base_ttft_ms: 240.0             # Median Time To First Token (ms)
+  ttft_sigma: 0.25                # Log-normal distribution shape factor (tail jitter)
+  token_generation_ms: 4.5        # Latency per emitted output token (~222 tokens/sec)
+  load_latency_factor: 0.08       # 8% latency increase per concurrent in-flight request
+
+limits:
+  rpm_limit: 30                   # Requests Per Minute (Free Tier ceiling)
+  tpm_limit: 6000                 # Tokens Per Minute
+  rpd_limit: 14400                # Requests Per Day
+  daily_requests_remaining: 14400
+  max_concurrent_requests: 5      # Maximum in-flight connections before saturation
+
+fault_injection:
+  error_probability: 0.0          # Injected 5xx error probability (0.0 to 1.0)
+  timeout_probability: 0.0        # Injected timeout probability (0.0 to 1.0)
+  timeout_threshold_ms: 30000.0   # Timeout duration threshold in ms
+
+streaming:
+  stream_chunk_tokens: 4          # Words/tokens per streamed SSE delta
+  
+determinism:
+  random_seed: 42                 # Deterministic seed for reproducible benchmarks
+

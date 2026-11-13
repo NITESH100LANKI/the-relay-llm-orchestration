@@ -1,0 +1,9 @@
+Metric,Retries Enabled (max_retries=2),Retries Disabled (max_retries=0),Delta / Impact
+Offered Requests,25,25,Identical traffic load (seed=606)
+Completed Requests,3,3,+0 completed
+Failed Requests,22,22,+0 failures
+Completed Latency p50 (ms),704.5,708.7,-4.2 ms
+Completed Latency p95 (ms),14793.3,772.2,+14021.1 ms
+Total API Calls Made,69,25,+44 calls (+176.0%)
+Number of 429s Encountered,66,22,+44 HTTP 429s
+Peak Queue Length,9,1,+8 waiting requests

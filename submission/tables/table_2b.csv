@@ -1,0 +1,6 @@
+Scenario,Succeeded %,Rate-limited %,Timed out or given up %,Retries per request,Peak queue length,Tokens per answer,"Cost per 1,000 answers"
+Steady Load,40.0%,60.0%,0.0%,1.20,1,1402,$0.2804
+Sudden Burst,16.0%,84.0%,0.0%,1.68,20,1402,$0.2804
+Sustained Overload,11.4%,88.6%,0.0%,1.77,28,1402,$0.2804
+Rpm Limit Halved,10.0%,90.0%,0.0%,1.80,14,1430,$0.2859
+Daily Budget Exhausted,0.0%,100.0%,0.0%,0.00,0,N/A (0 succeeded),$0.0000

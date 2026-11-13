@@ -1,0 +1,3031 @@
+[
+  {
+    "question_id": "Q01",
+    "category": "direct_factual",
+    "question": "What is the exact mathematical formula for Scaled Dot-Product Attention in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the exact mathematical formula for Scaled Dot-Product Attention is:\n\n$$ \\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V $$\n\nIn this formula, the input consists of queries ($Q$), keys ($K$), and values ($V$). The queries and keys have dimension $d_k$, while the values have dimension $d_v$. The dot products of the query with all keys are computed, divided by $\\sqrt{d_k}$, and a softmax function is applied to obtain the weights on the values [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1]. The scaling factor of $\\frac{1}{\\sqrt{d_k}}$ is used to counteract the effect of large dot product magnitudes for large values of $d_k$, which can push the softmax function into regions with extremely small gradients [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p4_c0009",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p4_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p13_c0034",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 13,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 1287,
+    "tokens_out": 264,
+    "first_token_ms": 644.9,
+    "provider_ttft_ms": 510.8,
+    "total_ms": 1412.4140000203624,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:45:05Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "999",
+      "x-ratelimit-remaining-tokens": "6471",
+      "x-ratelimit-reset-requests": "1m26.4s",
+      "x-ratelimit-reset-tokens": "11.467s"
+    }
+  },
+  {
+    "question_id": "Q02",
+    "category": "direct_factual",
+    "question": "What is the bitrate and frame rate of the Mimi audio codec in Moshi?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Moshi: a speech-text foundation model for real-time dialogue\" mention the \"Mimi\" auto-encoder/tokenizer in the context of watermarking detection scores and audio compression/decompression at 24kHz [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 39, Section 6.3 System voice consistency]. However, the specific numerical values for the **bitrate** and **frame rate** of the Mimi audio codec are not included in the retrieved text.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p35_c0102",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p33_c0097",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p39_c0112",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 39,
+        "section": "6.3 System voice consistency"
+      }
+    ],
+    "tokens_in": 1761,
+    "tokens_out": 144,
+    "first_token_ms": 747.2,
+    "provider_ttft_ms": 660.6,
+    "total_ms": 1738.7159999925643,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:45:12Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "998",
+      "x-ratelimit-remaining-tokens": "5437",
+      "x-ratelimit-reset-requests": "2m52.8s",
+      "x-ratelimit-reset-tokens": "19.697s"
+    }
+  },
+  {
+    "question_id": "Q03",
+    "category": "direct_factual",
+    "question": "How does Dynamic Chunking determine chunk boundaries for hierarchical sequence modeling?",
+    "expected_grade": "correct",
+    "target_paper": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question. The provided passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" (arXiv 2507.07955v2) contain only the Acknowledgements, a fragment of the Abstract mentioning model components (E0, E1, M, D1, D0), and a footnote regarding the etymology of \"pro-duct.\" They do not contain the specific methodology or algorithmic details explaining how chunk boundaries are determined.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p24_c0082",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 24,
+        "section": "Acknowledgements"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p4_c0013",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p7_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 7,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 658,
+    "tokens_out": 114,
+    "first_token_ms": 685.6,
+    "provider_ttft_ms": 626.3,
+    "total_ms": 1625.3080000169575,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:45:18Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "997",
+      "x-ratelimit-remaining-tokens": "5474",
+      "x-ratelimit-reset-requests": "4m19.2s",
+      "x-ratelimit-reset-tokens": "20.22s"
+    }
+  },
+  {
+    "question_id": "Q04",
+    "category": "technical",
+    "question": "In the base Transformer model, what are the values of d_model, d_k, d_v, and the number of heads h?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the values for the base Transformer model are:\n\n*   **$d_{model}$**: 512\n*   **$d_k$**: 64\n*   **$d_v$**: 64\n*   **Number of heads ($h$)**: 8\n\nThese values are explicitly stated in the text describing the multi-head attention mechanism, where it notes that $h = 8$ parallel attention layers are employed, and for each head, $d_k = d_v = d_{model}/h = 64$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section 3.2.2]. Additionally, Table 3 confirms these parameters for the \"base\" model configuration, listing $d_{model}$ as 512, $h$ as 8, $d_k$ as 64, and $d_v$ as 64 [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 9, Section 5.1].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 5,
+        "section": "3.2.2"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 9,
+        "section": "5.1"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p5_c0010",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p9_c0022",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0019",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1783,
+    "tokens_out": 252,
+    "first_token_ms": 708.8,
+    "provider_ttft_ms": 590.4,
+    "total_ms": 1594.8955999920145,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:45:25Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "996",
+      "x-ratelimit-remaining-tokens": "4453",
+      "x-ratelimit-reset-requests": "5m45.6s",
+      "x-ratelimit-reset-tokens": "27.325s"
+    }
+  },
+  {
+    "question_id": "Q05",
+    "category": "technical",
+    "question": "How many codebooks does Mimi use in its Residual Vector Quantizer (RVQ) and what is the codebook size?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages describe the general architecture of the Residual Vector Quantizer (RVQ) in Mimi, stating that it uses \"$Q$ quantizers, each with a codebook of $N_A$ centroids\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]. However, the specific numerical values for the number of codebooks ($Q$) and the codebook size ($N_A$) are not explicitly stated in the provided text.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p33_c0096",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p53_c0153",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 53,
+        "section": "Appendix A. Additional ablation on Mimi codec"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0026",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      }
+    ],
+    "tokens_in": 1730,
+    "tokens_out": 145,
+    "first_token_ms": 602.9,
+    "provider_ttft_ms": 501.3,
+    "total_ms": 1355.438900005538,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:45:31Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "995",
+      "x-ratelimit-remaining-tokens": "3270",
+      "x-ratelimit-reset-requests": "7m12s",
+      "x-ratelimit-reset-tokens": "35.485s"
+    }
+  },
+  {
+    "question_id": "Q06",
+    "category": "cross_section",
+    "question": "How does positional encoding in Section 3.5 of Attention Is All You Need address sequence order without recurrence?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the Transformer model addresses sequence order without recurrence by injecting positional information directly into the input representations. Because the model contains no recurrence or convolution, it adds \"positional encodings\" to the input embeddings at the bottom of both the encoder and decoder stacks [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. These positional encodings are designed to have the same dimension ($d_{model}$) as the embeddings, allowing the two to be summed together [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. The paper notes that there are various choices for these encodings, including both learned and fixed versions [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. This approach allows the model to make use of the relative or absolute position of tokens in the sequence, overcoming the lack of inherent sequential processing found in recurrent architectures [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p6_c0013",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0005",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0003",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1347,
+    "tokens_out": 283,
+    "first_token_ms": 563.1,
+    "provider_ttft_ms": 533.1,
+    "total_ms": 1363.6443000286818,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:46:11Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "994",
+      "x-ratelimit-remaining-tokens": "6401",
+      "x-ratelimit-reset-requests": "8m38.4s",
+      "x-ratelimit-reset-tokens": "11.992s"
+    }
+  },
+  {
+    "question_id": "Q07",
+    "category": "cross_section",
+    "question": "In Moshi, how are text tokens and audio codec tokens synchronized across the multi-stream channels?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, text tokens and audio codec tokens in Moshi are synchronized through a **joint sequence representation** where each column of the sequence corresponds to a specific time step, utilizing an **acoustic delay** and a specific token prediction order.\n\n1.  **Joint Sequence Structure**: The model represents the dialogue as a joint sequence where each column represents the tokens for a given step. This structure includes acoustic tokens, semantic tokens, and text tokens for both the Moshi stream and the User stream. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4 Inner Monologue]\n\n2.  **Acoustic Delay**: The synchronization involves an acoustic delay parameter, denoted as $\\tau$. In the described representation, an acoustic delay of $\\tau = 1$ is used, which defines the input to the Temporal Transformer for a given step. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4 Inner Monologue]\n\n3.  **Prediction Order**: Within each time step (column), tokens are predicted from bottom to top by the Depth Transformer. This hierarchical prediction allows the model to handle overlapping speech turns, as it can process user inputs (fed from above the dashed line) and generate Moshi's outputs (sampled below the dashed line) simultaneously. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4 Inner Monologue]\n\n4.  **Handling Silence and Turn Changes**: There are no explicit boundaries for turn changes. When the user speaks and Moshi is silent, Moshi\u2019s audio tokens decode into \"natural silence\" (a near-silent waveform) rather than a fixed value, while Moshi\u2019s text stream is filled with PAD tokens. This mechanism allows the text stream to control Moshi's behavior; for example, sampling an EPAD token forces Moshi to start talking immediately. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 17, Section 4 Datasets and training]\n\n5.  **Streaming Adaptation**: In specific streaming modes like ASR or TTS, synchronization is further managed by introducing a delay between audio and text tokens. In ASR mode, audio is ahead of text, and in TTS mode, text is ahead of audio, with the model operating in full streaming mode with fixed latency. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 55, Section Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS]",
+    "citations": [
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 17,
+        "section": "4 Datasets and training"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 55,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p15_c0040",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 15,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p17_c0048",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 17,
+        "section": "4 Datasets and training"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p55_c0160",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 55,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      }
+    ],
+    "tokens_in": 1468,
+    "tokens_out": 648,
+    "first_token_ms": 1385.9,
+    "provider_ttft_ms": 1337.5,
+    "total_ms": 3393.3816999779083,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:46:19Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "993",
+      "x-ratelimit-remaining-tokens": "5645",
+      "x-ratelimit-reset-requests": "10m4.8s",
+      "x-ratelimit-reset-tokens": "25.32s"
+    }
+  },
+  {
+    "question_id": "Q08",
+    "category": "cross_paper_comparison",
+    "question": "How does sequence downsampling in Dynamic Chunking compare conceptually to the multi-head attention mechanism in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" describe the downsampling mechanism as a \"straightforward selection rule\" where vectors marked by boundary indicators are retained and others are discarded, noting that this simple approach performs on par with alternatives like cross-attention [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 6, Section: Abstract] [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 36, Section: References]. However, the retrieved passages do not contain any text from \"Attention Is All You Need\" describing the multi-head attention mechanism, nor do they provide a conceptual comparison between the two mechanisms.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p36_c0126",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 36,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p6_c0020",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0042",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1319,
+    "tokens_out": 198,
+    "first_token_ms": 3165.4,
+    "provider_ttft_ms": 615.9,
+    "total_ms": 4089.7393000195734,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:46:28Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "992",
+      "x-ratelimit-remaining-tokens": "4953",
+      "x-ratelimit-reset-requests": "11m31.2s",
+      "x-ratelimit-reset-tokens": "55.68s"
+    }
+  },
+  {
+    "question_id": "Q09",
+    "category": "cross_paper_comparison",
+    "question": "Compare the latency handling in Moshi's streaming architecture with the auto-regressive generation in the original Transformer.",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages contain detailed information regarding the causal masking and streaming capabilities of the **Mimi** audio codec within the **Moshi** paper (specifically noting that Mimi is causal and operates with an 80ms frame size to support streaming inference) [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]. However, the retrieved passages do not contain any text describing the auto-regressive generation mechanism, latency handling, or architectural specifics of the original **Transformer** model from the paper \"Attention Is All You Need.\" The other retrieved passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" discuss sparsity and hybrid architectures but do not provide the necessary comparison points regarding the original Transformer's auto-regressive latency. Therefore, a direct comparison cannot be made using only the provided text.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0027",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p20_c0072",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 20,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p20_c0071",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 20,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1301,
+    "tokens_out": 216,
+    "first_token_ms": 3055.4,
+    "provider_ttft_ms": 493.6,
+    "total_ms": 3796.475500043016,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:46:37Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "991",
+      "x-ratelimit-remaining-tokens": "4815",
+      "x-ratelimit-reset-requests": "12m57.599s",
+      "x-ratelimit-reset-tokens": "50.099s"
+    }
+  },
+  {
+    "question_id": "Q10",
+    "category": "incomplete_evidence",
+    "question": "What was the exact room temperature in degrees Celsius of the Google server room where the Transformer was trained?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "rate_limited",
+    "answer_grade": null,
+    "refused": true,
+    "refusal_reason": "{\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 720, Requested 648. Please try again in 22.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "answer": "Service Unavailable: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 720, Requested 648. Please try again in 22.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p8_c0021",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p9_c0022",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p50_c0146",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 50,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "first_token_ms": null,
+    "provider_ttft_ms": null,
+    "total_ms": 5608.562499983236,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:46:47Z",
+    "rate_limit_headers": {
+      "retry-after": "23",
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "991",
+      "x-ratelimit-remaining-tokens": "6249",
+      "x-ratelimit-reset-requests": "12m57.599s",
+      "x-ratelimit-reset-tokens": "43.199s"
+    }
+  },
+  {
+    "question_id": "Q11",
+    "category": "unanswerable",
+    "question": "What is the exact financial dollar cost of electricity and GPU hardware used to train the Moshi 7B model?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "rate_limited",
+    "answer_grade": null,
+    "refused": true,
+    "refusal_reason": "{\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 542, Requested 648. Please try again in 11.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "answer": "Service Unavailable: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 542, Requested 648. Please try again in 11.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p6_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 6,
+        "section": "3 Model"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p33_c0096",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0102",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      }
+    ],
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "first_token_ms": null,
+    "provider_ttft_ms": null,
+    "total_ms": 5649.544199986849,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:46:58Z",
+    "rate_limit_headers": {
+      "retry-after": "12",
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "991",
+      "x-ratelimit-remaining-tokens": "7458",
+      "x-ratelimit-reset-requests": "12m57.599s",
+      "x-ratelimit-reset-tokens": "32.52s"
+    }
+  },
+  {
+    "question_id": "Q12",
+    "category": "unanswerable",
+    "question": "How does the Transformer model perform when quantized and deployed on an Apple Watch Series 9?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages discuss the quantization of the **Moshi** model (specifically its Temporal and Depth Transformers) and the training/inference details of the original **Transformer** model for machine translation. However, none of the passages mention **Apple Watch Series 9**, nor do they provide data on deploying the Transformer model on wearable devices or specific mobile hardware constraints. The Moshi paper discusses quantization for performance and audio quality in a general context [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 32, Section 5.8 Compressing Moshi and Impact on Speech Quality], and the Attention paper discusses training on GPUs (K80, K40, M40, P100) [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 8, Section 6.2 Model Variations], but neither addresses Apple Watch deployment.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p32_c0093",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0027",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0021",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1509,
+    "tokens_out": 236,
+    "first_token_ms": 550.3,
+    "provider_ttft_ms": 489.9,
+    "total_ms": 1285.9056000015698,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:47:04Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "990",
+      "x-ratelimit-remaining-tokens": "5760",
+      "x-ratelimit-reset-requests": "14m24s",
+      "x-ratelimit-reset-tokens": "43.86s"
+    }
+  },
+  {
+    "question_id": "Q13",
+    "category": "naive_retriever_trap",
+    "question": "What is the role of the acoustic Transformer in dynamic chunking sequence modeling?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" discuss the performance of byte-level H-Nets, the compression rates of dynamic chunking modules, and comparisons to BPE tokenizers [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract]. However, none of the retrieved passages mention an \"acoustic Transformer\" or its specific role within the dynamic chunking sequence modeling framework.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p26_c0091",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 26,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p3_c0009",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p34_c0121",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 34,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 740,
+    "tokens_out": 130,
+    "first_token_ms": 2971.8,
+    "provider_ttft_ms": 418.5,
+    "total_ms": 3599.8990000225604,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:47:13Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "989",
+      "x-ratelimit-remaining-tokens": "6018",
+      "x-ratelimit-reset-requests": "15m50.4s",
+      "x-ratelimit-reset-tokens": "45.3s"
+    }
+  },
+  {
+    "question_id": "Q14",
+    "category": "naive_retriever_trap",
+    "question": "How does Mimi's audio codec utilize 8 parallel multi-head attention layers in its residual vector quantizer?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages describe Mimi's architecture, stating that it uses a Residual Vector Quantizer (RVQ) and adds \"Transformer modules in the bottleneck, one right before quantization and one after.\" These Transformers are specified to have \"8 layers, 8 heads\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]. However, the text does not state that the RVQ itself utilizes \"8 parallel multi-head attention layers.\" The 8 layers and 8 heads refer to the Transformer modules placed in the bottleneck (before and after quantization), not the internal structure of the Residual Vector Quantizer, which is described as iteratively applying vector quantization to residuals [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture].",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0026",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0027",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p9_c0025",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 9,
+        "section": "3.3 Audio Tokenization"
+      }
+    ],
+    "tokens_in": 1388,
+    "tokens_out": 238,
+    "first_token_ms": 3368.7,
+    "provider_ttft_ms": 706.7,
+    "total_ms": 4429.415300022811,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:47:22Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "988",
+      "x-ratelimit-remaining-tokens": "5691",
+      "x-ratelimit-reset-requests": "17m16.8s",
+      "x-ratelimit-reset-tokens": "44.22s"
+    }
+  },
+  {
+    "question_id": "Q15",
+    "category": "naive_retriever_trap",
+    "question": "Why did Vaswani et al. choose a 12.5 Hz latent frame rate for the Transformer encoder self-attention?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "A",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Attention Is All You Need\" (arXiv 1706.03762v7) discuss the architecture of the Transformer for language tasks (specifically English constituency parsing and machine translation) and do not mention a \"12.5 Hz latent frame rate\" or speech processing. The passage from \"Moshi: a speech-text foundation model for real-time dialogue\" (arXiv 2410.00037v1) discusses a 12.5 Hz frame rate (derived from an 80ms stride) for the Mimi model, but it does not attribute this choice to Vaswani et al. nor does it discuss the \"Transformer encoder self-attention\" in the context of the original \"Attention Is All You Need\" paper.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p3_c0006",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0027",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p1_c0002",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 1,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1404,
+    "tokens_out": 187,
+    "first_token_ms": 473.3,
+    "provider_ttft_ms": 414.1,
+    "total_ms": 1095.165500009898,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:47:29Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "987",
+      "x-ratelimit-remaining-tokens": "4857",
+      "x-ratelimit-reset-requests": "18m43.2s",
+      "x-ratelimit-reset-tokens": "55.98s"
+    }
+  },
+  {
+    "question_id": "Q01",
+    "category": "direct_factual",
+    "question": "What is the exact mathematical formula for Scaled Dot-Product Attention in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "The exact mathematical formula for Scaled Dot-Product Attention is:\n\n$$ \\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V $$\n\nIn this formula, the input consists of queries and keys of dimension $d_k$, and values of dimension $d_v$. The dot products of the query with all keys are computed, divided by $\\sqrt{d_k}$, and a softmax function is applied to obtain the weights on the values. [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1]\n\nThe scaling factor of $\\frac{1}{\\sqrt{d_k}}$ is used to counteract the effect of dot products growing large in magnitude for larger values of $d_k$, which would otherwise push the softmax function into regions with extremely small gradients. [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1]",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p4_c0006",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p4_c0007",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0009",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p13_c0024",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 13,
+        "section": "References"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p14_c0025",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 14,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 2001,
+    "tokens_out": 244,
+    "first_token_ms": 640.8,
+    "provider_ttft_ms": 559.7,
+    "total_ms": 1481.0952999978326,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:47:35Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "986",
+      "x-ratelimit-remaining-tokens": "3554",
+      "x-ratelimit-reset-requests": "20m9.6s",
+      "x-ratelimit-reset-tokens": "58.199s"
+    }
+  },
+  {
+    "question_id": "Q02",
+    "category": "direct_factual",
+    "question": "What is the bitrate and frame rate of the Mimi audio codec in Moshi?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the Mimi audio codec in Moshi has a bitrate of **1.1 kbps** and a frame rate of **12.5 Hz**. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 23, Section 5.2 Audio Tokenization]\n\nThe paper notes that the codec operates with an audio sample rate ($f_s$) of 24 kHz. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 23, Section 5.2 Audio Tokenization] Additionally, the architecture is causal, with an initial frame size and overall stride corresponding to **80 ms**, which aligns with the 12.5 Hz frame rate (1/0.08s = 12.5 Hz). [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]",
+    "citations": [
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 23,
+        "section": "5.2 Audio Tokenization"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 23,
+        "section": "5.2 Audio Tokenization"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0065",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p34_c0064",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 34,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0060",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p23_c0041",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 23,
+        "section": "5.2 Audio Tokenization"
+      }
+    ],
+    "tokens_in": 3066,
+    "tokens_out": 258,
+    "first_token_ms": 4706.2,
+    "provider_ttft_ms": 626.7,
+    "total_ms": 5646.952399984002,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:47:49Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "985",
+      "x-ratelimit-remaining-tokens": "2081",
+      "x-ratelimit-reset-requests": "21m36s",
+      "x-ratelimit-reset-tokens": "59.4s"
+    }
+  },
+  {
+    "question_id": "Q03",
+    "category": "direct_factual",
+    "question": "How does Dynamic Chunking determine chunk boundaries for hierarchical sequence modeling?",
+    "expected_grade": "correct",
+    "target_paper": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, Dynamic Chunking determines chunk boundaries through a **dynamic, content- and context-dependent mechanism** that is learned end-to-end via standard gradient-based optimization. Unlike static or external methods, the boundaries are not fixed-width or provided by external delimiters, but are instead determined by the model itself based on the input data.\n\nThe specific process involves the following key components and steps:\n\n1.  **Routing Module:** The mechanism utilizes a **routing module** to dynamically draw chunk boundaries. This module generates boundary indicators that determine where chunks begin and end [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract].\n2.  **Downsampling:** A **downsampler** selectively retains vectors based on these boundary indicators. This step reduces the sequence length while preserving semantically significant positions [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract].\n3.  **Learning Strategy:** The chunking strategy is **content-dependent** and learned end-to-end, distinguishing it from static chunking (which uses fixed-width pooling) or external chunking (which uses delimiters or entropy) [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 31, Section References].\n4.  **Dechunking (Upsampling):** To restore the sequence, a **dechunking layer** is used, which includes a **smoothing module** to convert discrete chunks into interpolated representations and an **upsampler** that restores compressed vectors to their original resolution based on the same boundary indicators [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract].\n5.  **Outcome:** This process allows the model to learn meaningful boundaries without external supervision or heuristics, naturally compressing data to a resolution similar to BPE tokenizers (approximately 4.5\u20135 bytes per chunk) [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract].",
+    "citations": [
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 31,
+        "section": "References"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p24_c0051",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 24,
+        "section": "Acknowledgements"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p21_c0044",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 21,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p23_c0050",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 23,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p31_c0069",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 31,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p3_c0005",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 3,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 1829,
+    "tokens_out": 517,
+    "first_token_ms": 844.5,
+    "provider_ttft_ms": 772.8,
+    "total_ms": 2004.610700008925,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:48:53Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "984",
+      "x-ratelimit-remaining-tokens": "5913",
+      "x-ratelimit-reset-requests": "23m2.4s",
+      "x-ratelimit-reset-tokens": "15.652s"
+    }
+  },
+  {
+    "question_id": "Q04",
+    "category": "technical",
+    "question": "In the base Transformer model, what are the values of d_model, d_k, d_v, and the number of heads h?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the values for the base Transformer model are:\n\n*   **$d_{model}$**: 512\n*   **$d_k$**: 64\n*   **$d_v$**: 64\n*   **Number of heads ($h$)**: 8\n\nThese values are explicitly listed in Table 3 for the \"base\" model configuration [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 9, Section Abstract]. Additionally, the text in Section 3.2.2 confirms that for the base model, $h = 8$ parallel attention layers are employed, and for each head, $d_k = d_v = d_{model}/h = 64$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section Abstract].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 5,
+        "section": "Abstract"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0014",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p9_c0016",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p17_c0036",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 17,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 3409,
+    "tokens_out": 207,
+    "first_token_ms": 598.2,
+    "provider_ttft_ms": 520.9,
+    "total_ms": 1384.1144999605604,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:49:03Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "983",
+      "x-ratelimit-remaining-tokens": "3361",
+      "x-ratelimit-reset-requests": "24m28.8s",
+      "x-ratelimit-reset-tokens": "37.56s"
+    }
+  },
+  {
+    "question_id": "Q05",
+    "category": "technical",
+    "question": "How many codebooks does Mimi use in its Residual Vector Quantizer (RVQ) and what is the codebook size?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nWhile the provided passages describe the architecture of Mimi's Residual Vector Quantizer (RVQ) using the variables $Q$ for the number of quantizers and $N_A$ for the codebook size [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1], and the figures in Appendix D list \"Codebook 1\" through \"Codebook 7\" alongside \"Semantic\" and \"Text\" tokens [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 59, Section Appendix D. Characterizing Audio Artifacts Caused by Quantization], the specific numerical values for $Q$ (total number of codebooks/quantizers) and $N_A$ (codebook size) are not explicitly stated in the provided text. The text mentions the use of a \"single vector quantizer\" for semantic tokens and \"separate acoustic tokens\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1], but does not provide the specific count of acoustic codebooks or the size of the codebooks in the retrieved passages.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p33_c0061",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0059",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0016",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p60_c0112",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 60,
+        "section": "Appendix D. Characterizing Audio Artifacts Caused by Quantization"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p59_c0110",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 59,
+        "section": "Appendix D. Characterizing Audio Artifacts Caused by Quantization"
+      }
+    ],
+    "tokens_in": 3772,
+    "tokens_out": 320,
+    "first_token_ms": 676.9,
+    "provider_ttft_ms": 601.5,
+    "total_ms": 1579.6243000077084,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:49:45Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "982",
+      "x-ratelimit-remaining-tokens": "3945",
+      "x-ratelimit-reset-requests": "25m55.199s",
+      "x-ratelimit-reset-tokens": "30.412s"
+    }
+  },
+  {
+    "question_id": "Q06",
+    "category": "cross_section",
+    "question": "How does positional encoding in Section 3.5 of Attention Is All You Need address sequence order without recurrence?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, Section 3.5 of \"Attention Is All You Need\" explains that because the Transformer model contains no recurrence and no convolution, it must inject information about the relative or absolute position of tokens to make use of the sequence order [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nTo achieve this, the authors add \"positional encodings\" to the input embeddings at the bottoms of the encoder and decoder stacks [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. These positional encodings have the same dimension ($d_{model}$) as the embeddings, allowing them to be summed [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nSpecifically, the paper utilizes sine and cosine functions of different frequencies, defined by the following equations where $pos$ is the position and $i$ is the dimension:\n$$PE_{(pos,2i)} = \\sin(pos/10000^{2i/d_{model}})$$\n$$PE_{(pos,2i+1)} = \\cos(pos/10000^{2i/d_{model}})$$\n[Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nThe wavelengths of these sinusoids form a geometric progression from $2\\pi$ to $10000 \\cdot 2\\pi$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. The authors chose this specific function for two main reasons:\n1.  They hypothesized it would allow the model to easily learn to attend by relative positions, as for any fixed offset $k$, $PE_{pos+k}$ can be represented as a linear function of $PE_{pos}$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n2.  It may allow the model to extrapolate to sequence lengths longer than those encountered during training [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nThe paper also notes that they experimented with learned positional embeddings and found that the two versions produced nearly identical results [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p2_c0004",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p6_c0011",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p22_c0046",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 22,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p6_c0010",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0003",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2970,
+    "tokens_out": 627,
+    "first_token_ms": 900.5,
+    "provider_ttft_ms": 829.5,
+    "total_ms": 2145.225299987942,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:49:55Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "981",
+      "x-ratelimit-remaining-tokens": "1965",
+      "x-ratelimit-reset-requests": "27m21.6s",
+      "x-ratelimit-reset-tokens": "45.262s"
+    }
+  },
+  {
+    "question_id": "Q07",
+    "category": "cross_section",
+    "question": "In Moshi, how are text tokens and audio codec tokens synchronized across the multi-stream channels?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, text tokens and audio codec tokens in Moshi are synchronized through a **joint sequence representation** where each time step (column) contains tokens from multiple streams, utilizing specific **delays** and a **hierarchical generation** process.\n\n1.  **Joint Sequence Structure:** The model represents the dialogue as a joint sequence where each column corresponds to a specific step in time, containing tokens for both audio (semantic and acoustic) and text streams. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4]\n2.  **Acoustic Delay:** An acoustic delay $\\tau$ is applied to the audio tokens. In the standard dialogue mode described, an acoustic delay of $\\tau = 1$ is used. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4]\n3.  **Text Stream Integration (Inner Monologue):** The text stream is derived from the transcription of Moshi\u2019s own speech using a SentencePiece tokenizer. This text stream is inserted as the **first sub-sequence** in the joint vector $V$, acting as a **prefix** to the generation of semantic tokens. This structure allows the text to scaffold the linguistic quality of the audio generation. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4]\n4.  **Hierarchical Generation:** Tokens are predicted from **bottom to top** in the Depth Transformer. This hierarchical approach allows the model to generate semantic tokens first, followed by acoustic tokens, while the text tokens serve as a prefix in the sequence. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 15, Section 3.4.4]\n5.  **Multi-Stream Synchronization:** In multi-stream mode (handling both user and Moshi), the model processes two sets of audio tokens (one for Moshi, one for the user) and a single text stream. The text stream uses `<bos>` and `<eos>` tokens to separate text belonging to the two speakers, ensuring alignment within the joint sequence. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 55, Section Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS]\n6.  **Training Alignment:** During post-training for multi-stream ability, the model is trained with a fixed alignment where the text stream contains tokens only from the main speaker, and the variable delay between text and audio streams is removed (implying a fixed, likely zero or minimal, delay for the main speaker's text relative to their audio in this specific training phase). [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 20, Section 4.4 Training stages and hyper-parameters]\n\nIn summary, synchronization is achieved by embedding text tokens as a prefix in the joint sequence vector for each time step, applying a fixed acoustic delay to the audio tokens, and using a depth-wise hierarchical transformer to generate the tokens in a specific order (text/semantic before acoustic).",
+    "citations": [
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 15,
+        "section": "3.4.4"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 55,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 20,
+        "section": "4.4 Training stages and hyper-parameters"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p56_c0106",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 56,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p15_c0026",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 15,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p6_c0010",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 6,
+        "section": "3 Model"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p55_c0105",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 55,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p20_c0036",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 20,
+        "section": "4.4 Training stages and hyper-parameters"
+      }
+    ],
+    "tokens_in": 2529,
+    "tokens_out": 777,
+    "first_token_ms": 1199.2,
+    "provider_ttft_ms": 1093.5,
+    "total_ms": 2840.4103000066243,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:50:46Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "980",
+      "x-ratelimit-remaining-tokens": "4823",
+      "x-ratelimit-reset-requests": "28m48s",
+      "x-ratelimit-reset-tokens": "23.827s"
+    }
+  },
+  {
+    "question_id": "Q08",
+    "category": "cross_paper_comparison",
+    "question": "How does sequence downsampling in Dynamic Chunking compare conceptually to the multi-head attention mechanism in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "rate_limited",
+    "answer_grade": null,
+    "refused": true,
+    "refusal_reason": "{\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 510, Requested 627. Please try again in 8.22s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "answer": "Service Unavailable: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 510, Requested 627. Please try again in 8.22s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p6_c0011",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p32_c0070",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 32,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p23_c0050",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 23,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p31_c0069",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 31,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0023",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "first_token_ms": null,
+    "provider_ttft_ms": null,
+    "total_ms": 5519.542199966963,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:51:00Z",
+    "rate_limit_headers": {
+      "retry-after": "9",
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "980",
+      "x-ratelimit-remaining-tokens": "6834",
+      "x-ratelimit-reset-requests": "28m48s",
+      "x-ratelimit-reset-tokens": "30.6s"
+    }
+  },
+  {
+    "question_id": "Q09",
+    "category": "cross_paper_comparison",
+    "question": "Compare the latency handling in Moshi's streaming architecture with the auto-regressive generation in the original Transformer.",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages describe Moshi\u2019s streaming architecture, noting that it uses causal masking to preserve compatibility with streaming inference and operates with an 80ms frame size for both encoding and decoding [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]. They also mention that Moshi requires only 2 seconds of lookahead for certain tasks like ASR, compared to full-sequence access required by other systems [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 31, Section 5.7 Streaming ASR and TTS].\n\nHowever, the retrieved passages do not contain any information regarding the \"original Transformer\" (referring to the paper \"Attention Is All You Need\") or its specific auto-regressive generation latency characteristics. The passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" discuss hybrid architectures and performance comparisons but do not provide details on the latency handling of the original Transformer's auto-regressive generation. Therefore, a direct comparison of latency handling between the two specific systems cannot be made based solely on the provided text.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p31_c0058",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 31,
+        "section": "5.7 Streaming ASR and TTS"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p20_c0043",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 20,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p56_c0106",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 56,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      }
+    ],
+    "tokens_in": 1885,
+    "tokens_out": 289,
+    "first_token_ms": 5735.3,
+    "provider_ttft_ms": 547.0,
+    "total_ms": 6556.629400001839,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:51:15Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "979",
+      "x-ratelimit-remaining-tokens": "5323",
+      "x-ratelimit-reset-requests": "30m14.4s",
+      "x-ratelimit-reset-tokens": "47.52s"
+    }
+  },
+  {
+    "question_id": "Q10",
+    "category": "incomplete_evidence",
+    "question": "What was the exact room temperature in degrees Celsius of the Google server room where the Transformer was trained?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question. The provided passages from \"Attention Is All You Need\" mention that training took 3.5 days on 8 P100 GPUs [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 8, Section 6.1], but they do not contain any information regarding the physical environment, such as the room temperature of the server room.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p8_c0014",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0015",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p8_c0013",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 8,
+        "section": "3.2.2 Pre-training data filtering"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p52_c0098",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 52,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p44_c0082",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 44,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 3853,
+    "tokens_out": 104,
+    "first_token_ms": 3202.8,
+    "provider_ttft_ms": 398.2,
+    "total_ms": 3800.8955999976024,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:51:27Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "978",
+      "x-ratelimit-remaining-tokens": "2869",
+      "x-ratelimit-reset-requests": "31m40.8s",
+      "x-ratelimit-reset-tokens": "52.26s"
+    }
+  },
+  {
+    "question_id": "Q11",
+    "category": "unanswerable",
+    "question": "What is the exact financial dollar cost of electricity and GPU hardware used to train the Moshi 7B model?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Moshi: a speech-text foundation model for real-time dialogue\" (arXiv 2410.00037v1) detail the model's hyperparameters, training phases, and the impact of quantization on performance and audio quality [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 8, Section 3.2.2 Pre-training data filtering] [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 32, Section 5.8 Compressing Moshi and Impact on Speech Quality]. However, none of the retrieved passages contain specific financial data regarding the dollar cost of electricity or GPU hardware used for training the 7B Moshi model. While the \"Attention Is All You Need\" paper mentions training costs in terms of floating-point operations and relative cost comparisons for its own model, it does not provide financial figures for Moshi [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 8, Section Abstract].",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p8_c0015",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p33_c0061",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0065",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p8_c0013",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 8,
+        "section": "3.2.2 Pre-training data filtering"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0060",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      }
+    ],
+    "tokens_in": 3563,
+    "tokens_out": 282,
+    "first_token_ms": 674.6,
+    "provider_ttft_ms": 560.7,
+    "total_ms": 1516.4043999975547,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:52:24Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "977",
+      "x-ratelimit-remaining-tokens": "3660",
+      "x-ratelimit-reset-requests": "33m7.2s",
+      "x-ratelimit-reset-tokens": "32.549s"
+    }
+  },
+  {
+    "question_id": "Q12",
+    "category": "unanswerable",
+    "question": "How does the Transformer model perform when quantized and deployed on an Apple Watch Series 9?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages discuss the quantization of the **Moshi** model (a speech-text foundation model) and its impact on linguistic and acoustic performance [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 32, Section 5.8 Compressing Moshi and Impact on Speech Quality]. They also discuss the performance of **H-Net** and **Transformer** baselines in hierarchical sequence modeling [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 12, Section Abstract]. However, none of the passages contain information regarding the deployment of any model (including the Transformer or Moshi) specifically on an **Apple Watch Series 9**, nor do they provide performance metrics for that specific hardware platform.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0059",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p20_c0043",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 20,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0022",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2398,
+    "tokens_out": 209,
+    "first_token_ms": 563.5,
+    "provider_ttft_ms": 494.2,
+    "total_ms": 1305.4820999968797,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:52:34Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "976",
+      "x-ratelimit-remaining-tokens": "2306",
+      "x-ratelimit-reset-requests": "34m33.6s",
+      "x-ratelimit-reset-tokens": "42.705s"
+    }
+  },
+  {
+    "question_id": "Q13",
+    "category": "naive_retriever_trap",
+    "question": "What is the role of the acoustic Transformer in dynamic chunking sequence modeling?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" (arXiv 2507.07955v2) describe the H-Net architecture, which utilizes **Mamba-2 layers** (State Space Models) as the primary building blocks for its encoder and decoder networks, and **Transformer layers** for the main network operating on compressed sequences [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 5, Section Abstract]. The passages detail the \"Dynamic Chunking\" mechanism, which includes routing, downsampling, smoothing, and upsampling modules [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract]. However, none of the retrieved passages mention an \"acoustic Transformer\" or its specific role within this dynamic chunking framework. The paper focuses on byte-level text modeling and general sequence compression, not specifically on acoustic modeling components named \"acoustic Transformer.\"",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p21_c0044",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 21,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p5_c0009",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p14_c0027",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 14,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p3_c0005",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 3,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2138,
+    "tokens_out": 256,
+    "first_token_ms": 640.0,
+    "provider_ttft_ms": 552.9,
+    "total_ms": 1469.9857999803498,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:53:20Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "975",
+      "x-ratelimit-remaining-tokens": "5345",
+      "x-ratelimit-reset-requests": "36m0s",
+      "x-ratelimit-reset-tokens": "19.912s"
+    }
+  },
+  {
+    "question_id": "Q14",
+    "category": "naive_retriever_trap",
+    "question": "How does Mimi's audio codec utilize 8 parallel multi-head attention layers in its residual vector quantizer?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Moshi: a speech text foundation model for real time dialogue\" state that Mimi utilizes **Transformer** modules in the bottleneck (one before and one after the Residual Vector Quantizer) which have **8** layers and **8** **heads** [Cite: \"Moshi: a speech text foundation model for real time dialogue\", arXiv 2410.00037v1, p. 10, \u00a7 3.3.1]. However, the text does not explicitly state that these are \"multi-head **attention** layers\" in the specific terminology used in the question, but rather refers to them as \"Transformer\" modules. Furthermore, the passage from \"Attention Is All You Need\" mentions using **h = 8** parallel **attention** layers (or **heads**) in the context of the Transformer architecture's general design, but does not link this specific implementation to Mimi's **Residual Vector Quantizer** [Cite: \"Attention Is All You Need\", arXiv 1706.03762v7, p. 5, \u00a7 3.2.2]. The \"Moshi\" passage describes the **RVQ** as having **Q = 8** **quantizer**s, not **attention** **layers** [Cite: \"Moshi: a text-speech foundation model for real time dialogue\", arXiv 2410.00037v1, p. 11, \u00a7 3.3.2]. The question conflates the number of **quantizer**s in the **RVQ** with the number of **attention** **heads** in the **Transformer** **bottleneck**, and the provided text does not support the premise that the **RVQ** itself utilizes **8** **parallel** **multi-head** **attention** **layers**.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0016",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0059",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p11_c0018",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 11,
+        "section": "3.3.2 Learning semantic-acoustic tokens with a split RVQ"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 3124,
+    "tokens_out": 416,
+    "first_token_ms": 770.0,
+    "provider_ttft_ms": 690.9,
+    "total_ms": 1807.104600011371,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:53:31Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "974",
+      "x-ratelimit-remaining-tokens": "3277",
+      "x-ratelimit-reset-requests": "37m26.4s",
+      "x-ratelimit-reset-tokens": "35.422s"
+    }
+  },
+  {
+    "question_id": "Q15",
+    "category": "naive_retriever_trap",
+    "question": "Why did Vaswani et al. choose a 12.5 Hz latent frame rate for the Transformer encoder self-attention?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "B",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Attention Is All You Need\" (arXiv 1706.03762v7) describe the Transformer architecture for text processing, specifically detailing the encoder and decoder stacks, multi-head attention mechanisms, and position-wise feed-forward networks [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 3, Section 3.1] [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section 3.2]. They do not mention a \"12.5 Hz latent frame rate,\" as this concept is specific to audio/speech processing, not the original text-based Transformer.\n\nWhile the passage from \"Moshi: a speech-text foundation model for real-time dialogue\" (arXiv 2410.00037v1) discusses a latent frame rate, it specifies that the Mimi encoder/decoder uses a frame size and stride corresponding to **80ms** (which is 12.5 Hz), but it does not attribute this choice to Vaswani et al., nor does it explain why Vaswani et al. chose such a rate (since Vaswani et al.'s paper does not deal with audio frame rates) [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture].",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p13_c0024",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 13,
+        "section": "References"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p3_c0005",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p10_c0019",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 10,
+        "section": "Acknowledgements"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2264,
+    "tokens_out": 351,
+    "first_token_ms": 773.0,
+    "provider_ttft_ms": 639.3,
+    "total_ms": 1733.9567000162788,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:54:10Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "973",
+      "x-ratelimit-remaining-tokens": "4959",
+      "x-ratelimit-reset-requests": "38m52.8s",
+      "x-ratelimit-reset-tokens": "22.807s"
+    }
+  },
+  {
+    "question_id": "Q01",
+    "category": "direct_factual",
+    "question": "What is the exact mathematical formula for Scaled Dot-Product Attention in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the exact mathematical formula for Scaled Dot-Product Attention is:\n\n$$ \\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V $$\n\nIn this formula, the input consists of queries and keys of dimension $d_k$, and values of dimension $d_v$. The dot products of the query with all keys are computed, divided by $\\sqrt{d_k}$, and a softmax function is applied to obtain the weights on the values [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1]. The scaling factor of $1/\\sqrt{d_k}$ is used to counteract the effect of dot products growing large in magnitude for larger values of $d_k$, which would otherwise push the softmax function into regions with extremely small gradients [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 4, Section 3.2.1].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 4,
+        "section": "3.2.1"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p4_c0006",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 4,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0009",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p14_c0025",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 14,
+        "section": "References"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p15_c0026",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 15,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 2494,
+    "tokens_out": 244,
+    "first_token_ms": 770.7,
+    "provider_ttft_ms": 586.6,
+    "total_ms": 1651.544499967713,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:54:20Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "972",
+      "x-ratelimit-remaining-tokens": "3766",
+      "x-ratelimit-reset-requests": "40m19.2s",
+      "x-ratelimit-reset-tokens": "31.755s"
+    }
+  },
+  {
+    "question_id": "Q02",
+    "category": "direct_factual",
+    "question": "What is the bitrate and frame rate of the Mimi audio codec in Moshi?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the Mimi audio codec in Moshi operates at a bitrate of **1.1 kbps** and a frame rate of **12.5 Hz**.\n\n[Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 23, Section 5.2 Audio Tokenization]\n\nThe paper notes that Mimi is fully causal and compatible with streaming inference, with an initial frame size and overall stride corresponding to 80 ms. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]",
+    "citations": [
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 23,
+        "section": "5.2 Audio Tokenization"
+      },
+      {
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "arxiv_id": "2410.00037",
+        "version": "v1",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p23_c0041",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 23,
+        "section": "5.2 Audio Tokenization"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p39_c0072",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 39,
+        "section": "6.3 System voice consistency"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p24_c0044",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 24,
+        "section": "5.2 Audio Tokenization"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0065",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      }
+    ],
+    "tokens_in": 3050,
+    "tokens_out": 167,
+    "first_token_ms": 3119.7,
+    "provider_ttft_ms": 440.4,
+    "total_ms": 3781.1990999616683,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:54:33Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "971",
+      "x-ratelimit-remaining-tokens": "1870",
+      "x-ratelimit-reset-requests": "41m45.6s",
+      "x-ratelimit-reset-tokens": "45.975s"
+    }
+  },
+  {
+    "question_id": "Q03",
+    "category": "direct_factual",
+    "question": "How does Dynamic Chunking determine chunk boundaries for hierarchical sequence modeling?",
+    "expected_grade": "correct",
+    "target_paper": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, Dynamic Chunking determines chunk boundaries using a **content-dependent** strategy that is **learned end-to-end** [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 31, Section A.1].\n\nThe specific mechanism involves a **routing module** that dynamically draws these chunk boundaries [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract]. This process operates without any external supervision or heuristics, allowing the model to qualitatively learn meaningful boundaries [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract]. The boundaries are then used by a downsampler to selectively retain vectors, reducing sequence length while preserving semantically significant positions [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 3, Section Abstract].\n\nIn contrast to static chunking (which uses fixed-width pooling) or external chunking (which relies on delimiters or entropy thresholds from separate modules), dynamic chunking is the first architecture to enable dynamic, multi-stage hierarchies where boundaries are determined internally by the model [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 21, Section Abstract] [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 31, Section A.1].",
+    "citations": [
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 31,
+        "section": "A.1"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 21,
+        "section": "Abstract"
+      },
+      {
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "arxiv_id": "2507.07955",
+        "version": "v2",
+        "page_number": 31,
+        "section": "A.1"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p31_c0069",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 31,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p3_c0005",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p32_c0071",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 32,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p24_c0051",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 24,
+        "section": "Acknowledgements"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p21_c0044",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 21,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2243,
+    "tokens_out": 398,
+    "first_token_ms": 780.6,
+    "provider_ttft_ms": 662.8,
+    "total_ms": 1775.4732000175864,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:55:23Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "970",
+      "x-ratelimit-remaining-tokens": "4980",
+      "x-ratelimit-reset-requests": "43m12s",
+      "x-ratelimit-reset-tokens": "22.65s"
+    }
+  },
+  {
+    "question_id": "Q04",
+    "category": "technical",
+    "question": "In the base Transformer model, what are the values of d_model, d_k, d_v, and the number of heads h?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the values for the base Transformer model are:\n*   **$d_{model}$**: 512\n*   **$d_k$**: 64\n*   **$d_v$**: 64\n*   **$h$** (number of heads): 8\n\nThese values are explicitly stated in the text describing the multi-head attention mechanism, where it notes that \"we employ $h = 8$ parallel attention layers, or heads. For each of these we use $d_k = d_v = d_{model}/h = 64$\" [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section 3.2.2]. Additionally, Table 3 confirms these parameters for the \"base\" model configuration, listing $d_{model}=512$, $h=8$, $d_k=64$, and $d_v=64$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 9, Section 6.2].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 5,
+        "section": "3.2.2"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 9,
+        "section": "6.2"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p9_c0016",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0014",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0015",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p37_c0068",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 37,
+        "section": "6.3 System voice consistency"
+      }
+    ],
+    "tokens_in": 3538,
+    "tokens_out": 251,
+    "first_token_ms": 1587.0,
+    "provider_ttft_ms": 1510.7,
+    "total_ms": 3854.155400011223,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:55:35Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "969",
+      "x-ratelimit-remaining-tokens": "2542",
+      "x-ratelimit-reset-requests": "44m38.4s",
+      "x-ratelimit-reset-tokens": "51.42s"
+    }
+  },
+  {
+    "question_id": "Q05",
+    "category": "technical",
+    "question": "How many codebooks does Mimi use in its Residual Vector Quantizer (RVQ) and what is the codebook size?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, Mimi uses a **split residual vector quantization** architecture rather than a single standard RVQ. Specifically, it employs:\n\n1.  A **plain Vector Quantizer (VQ)** for semantic tokens.\n2.  An **RVQ with 7 levels** (codebooks) for acoustic tokens.\n\nThese are applied in parallel, and their outputs are summed. The text states: \"Rather than a single RVQ with 8 levels, we distill semantic information into a plain VQ and apply an RVQ with 7 levels in parallel.\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 12, Section 3.4 Generative audio modeling]\n\nRegarding the **codebook size** ($N_A$), the provided passages describe the general formulation where the RVQ discretizes the latent space into $\\{1, \\dots, N_A\\}^{S \\times Q}$ with $Q$ quantizers, each having a codebook of $N_A$ centroids. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture] However, the specific numerical value for $N_A$ (the codebook size) is **not explicitly stated** in the provided retrieved passages.\n\nTherefore, while the number of quantizers/levels is specified (1 semantic VQ + 7 acoustic RVQ levels), the exact codebook size is not provided in the text.\n\n**Summary:**\n*   **Number of Codebooks/Levels:** Mimi uses a split architecture with **1** semantic VQ and **7** acoustic RVQ levels (totaling 8 quantization stages). [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 12, Section 3.4 Generative audio modeling]\n*   **Codebook Size:** Based on the retrieved research papers, there is insufficient evidence to answer this question, as the specific value for $N_A$ is not mentioned in the provided passages.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0016",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p33_c0061",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p12_c0020",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 12,
+        "section": "3.4 Generative audio modeling"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0059",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p6_c0010",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 6,
+        "section": "3 Model"
+      }
+    ],
+    "tokens_in": 3715,
+    "tokens_out": 488,
+    "first_token_ms": 977.7,
+    "provider_ttft_ms": 891.8,
+    "total_ms": 2315.966699970886,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:56:32Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "968",
+      "x-ratelimit-remaining-tokens": "3658",
+      "x-ratelimit-reset-requests": "46m4.8s",
+      "x-ratelimit-reset-tokens": "32.564s"
+    }
+  },
+  {
+    "question_id": "Q06",
+    "category": "cross_section",
+    "question": "How does positional encoding in Section 3.5 of Attention Is All You Need address sequence order without recurrence?",
+    "expected_grade": "correct",
+    "target_paper": "Attention Is All You Need",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "correct",
+    "refused": false,
+    "refusal_reason": null,
+    "answer": "Based on the retrieved research papers, the Transformer model addresses sequence order without recurrence by injecting positional information directly into the input embeddings. Because the model contains no recurrence or convolution, it must explicitly add \"positional encodings\" to the input embeddings at the bottom of the encoder and decoder stacks to allow the model to make use of the order of the sequence [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nSpecifically, the authors use fixed sinusoidal functions (sine and cosine) of different frequencies for these encodings. The formulas are defined as:\n\n$$PE_{(pos, 2i)} = \\sin(pos/10000^{2i/d_{model}})$$\n$$PE_{(pos, 2i+1)} = \\cos(pos/10000^{2i/d_{model}})$$\n\nwhere $pos$ is the position and $i$ is the dimension [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5]. The wavelengths of these sinusoids form a geometric progression from $2\\pi$ to $10000 \\cdot 2\\pi$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nThe authors chose this sinusoidal version over learned positional embeddings for two main reasons:\n1.  **Relative Position Learning:** They hypothesized that this function would allow the model to easily learn to attend by relative positions, as for any fixed offset $k$, $PE_{pos+k}$ can be represented as a linear function of $PE_{pos}$ [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n2.  **Extrapolation:** The sinusoidal version may allow the model to extrapolate to sequence lengths longer than those encountered during training [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].\n\nThe paper notes that experiments with learned positional embeddings produced nearly identical results to the sinusoidal version [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 6, Section 3.5].",
+    "citations": [
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      },
+      {
+        "paper_title": "Attention Is All You Need",
+        "arxiv_id": "1706.03762",
+        "version": "v7",
+        "page_number": 6,
+        "section": "3.5"
+      }
+    ],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p2_c0004",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p6_c0010",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0003",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p9_c0016",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 9,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p6_c0011",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 3166,
+    "tokens_out": 552,
+    "first_token_ms": 5843.8,
+    "provider_ttft_ms": 774.0,
+    "total_ms": 7006.799300026614,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:56:47Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "967",
+      "x-ratelimit-remaining-tokens": "2089",
+      "x-ratelimit-reset-requests": "47m31.2s",
+      "x-ratelimit-reset-tokens": "51.3s"
+    }
+  },
+  {
+    "question_id": "Q07",
+    "category": "cross_section",
+    "question": "In Moshi, how are text tokens and audio codec tokens synchronized across the multi-stream channels?",
+    "expected_grade": "correct",
+    "target_paper": "Moshi: a speech-text foundation model for real-time dialogue",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nWhile the provided passages mention that Moshi uses \"time-aligned text tokens\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 6, Section 3 Model] and that during post-training the model is augmented with multi-stream ability where the text stream contains tokens from the main speaker [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 20, Section 4.4 Training stages and hyper-parameters], they do not describe the specific mechanism or synchronization method used to align text tokens with audio codec tokens across the multi-stream channels. The passages reference \"Section 3.4\" for the streaming, hierarchical generation of these tokens, but the content of Section 3.4 is not included in the retrieved passages.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p6_c0010",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 6,
+        "section": "3 Model"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p20_c0036",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 20,
+        "section": "4.4 Training stages and hyper-parameters"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p18_c0032",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 18,
+        "section": "4.3 Speech-Text Instruct data"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p56_c0106",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 56,
+        "section": "Appendix C. Delayed text LM as a zero-shot streaming ASR and TTS"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0065",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      }
+    ],
+    "tokens_in": 2987,
+    "tokens_out": 212,
+    "first_token_ms": 659.9,
+    "provider_ttft_ms": 598.6,
+    "total_ms": 1558.4948000032455,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:57:42Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "966",
+      "x-ratelimit-remaining-tokens": "4386",
+      "x-ratelimit-reset-requests": "48m57.6s",
+      "x-ratelimit-reset-tokens": "27.105s"
+    }
+  },
+  {
+    "question_id": "Q08",
+    "category": "cross_paper_comparison",
+    "question": "How does sequence downsampling in Dynamic Chunking compare conceptually to the multi-head attention mechanism in Attention Is All You Need?",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nWhile the provided passages describe the **multi-head attention mechanism** in \"Attention Is All You Need\" as a method that allows the model to \"jointly attend to information from different representation subspaces at different positions\" [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section 3.2.3], and describe **sequence downsampling** in \"Dynamic Chunking\" as a process that compresses encoder outputs into a reduced set of vectors using boundary indicators derived from cosine similarity [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 6, Section 2.2.1], the texts do not provide a direct conceptual comparison between these two specific mechanisms. The Dynamic Chunking paper compares its method to static chunking, spatial pooling, and external chunking strategies, but does not explicitly contrast it with the multi-head attention mechanism of the Transformer architecture in a way that establishes a direct conceptual parallel or distinction.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p12_c0023",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p6_c0011",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p1_c0001",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 1,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p32_c0070",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 32,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 3477,
+    "tokens_out": 245,
+    "first_token_ms": 598.8,
+    "provider_ttft_ms": 530.8,
+    "total_ms": 1395.4320999910124,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:57:52Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "965",
+      "x-ratelimit-remaining-tokens": "1891",
+      "x-ratelimit-reset-requests": "50m24s",
+      "x-ratelimit-reset-tokens": "45.817s"
+    }
+  },
+  {
+    "question_id": "Q09",
+    "category": "cross_paper_comparison",
+    "question": "Compare the latency handling in Moshi's streaming architecture with the auto-regressive generation in the original Transformer.",
+    "expected_grade": "correct",
+    "target_paper": "Both",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question fully regarding the specific auto-regressive generation mechanics of the original Transformer (Vaswani et al., 2017) as described in \"Attention Is All You Need.\" The provided passages from \"Attention Is All You Need\" are not included in the retrieved text, and the passages from \"Moshi\" only reference the original Transformer as a component (a smaller Transformer model) without detailing its original auto-regressive generation process for comparison.\n\nHowever, the retrieved passages provide detailed information on **Moshi's** latency handling in its streaming architecture:\n\n1.  **Causal Masking for Streaming:** Moshi\u2019s architecture uses Transformers with causal masking, which preserves compatibility with streaming inference. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]\n2.  **Frame Size and Initial Latency:** The Mimi audio codec is causal and operates with an initial frame size and overall stride of 80ms. This means that given a first audio frame of 80ms, the system outputs a first latent timestep that can be decoded to 80ms of output audio. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]\n3.  **Latency Constraints and Delay Patterns:** The architecture is designed to meet real-time dialogue requirements, which typically demand response times of a few hundred milliseconds, unlike traditional pipelines that suffer from global latencies of several seconds. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 2, Section 1 Introduction]\n4.  **Optimization for Latency:** The model uses specific delay patterns for Residual Vector Quantization (RVQ) tokens to balance latency and quality. A delay pattern of [0, 1, 2, 3, 4, 5, 6, 7] induces a theoretical latency of 640ms, which is deemed incompatible with real-time dialogue. Consequently, Moshi uses a reduced latency pattern of [0, 2, 2, 2, 2, 2, 2, 2], resulting in a latency of 240ms. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 26, Section 5.4 Audio language modeling]\n5.  **Minimal Latency:** The minimal latency achievable with Mimi tokens at 12.5Hz is 80ms, corresponding to a delay pattern of [0, 0, 0, 0, 0, 0, 0, 0]. Allowing an additional 80ms of latency (one step of delay) significantly improves the quality of generated speech. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 26, Section 5.4 Audio language modeling]\n6.  **Lookahead Requirements:** Moshi requires only 2 seconds of lookahead for its streaming ASR and TTS capabilities, whereas other systems like Vall-E and NaturalSpeech 3 require access to the full sequence. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 31, Section 5.7 Streaming ASR and TTS]\n\nThe original \"Attention Is All You Need\" paper is cited in the Moshi paper as the source for the Transformer model used in Moshi's architecture, but the specific details of its auto-regressive generation process are not present in the provided passages. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 3, Section 1 Introduction]",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p2_c0002",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 2,
+        "section": "1 Introduction"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p26_c0047",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 26,
+        "section": "5.4 Audio language modeling"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p31_c0058",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 31,
+        "section": "5.7 Streaming ASR and TTS"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p3_c0004",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 3,
+        "section": "1 Introduction"
+      }
+    ],
+    "tokens_in": 2767,
+    "tokens_out": 910,
+    "first_token_ms": 1150.0,
+    "provider_ttft_ms": 1104.8,
+    "total_ms": 2807.9109999816865,
+    "retries": 0,
+    "timestamp": "2026-11-13T05:58:44Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "964",
+      "x-ratelimit-remaining-tokens": "4456",
+      "x-ratelimit-reset-requests": "51m50.399s",
+      "x-ratelimit-reset-tokens": "26.58s"
+    }
+  },
+  {
+    "question_id": "Q10",
+    "category": "incomplete_evidence",
+    "question": "What was the exact room temperature in degrees Celsius of the Google server room where the Transformer was trained?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "rate_limited",
+    "answer_grade": null,
+    "refused": true,
+    "refusal_reason": "{\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 629, Requested 910. Please try again in 32.34s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "answer": "Service Unavailable: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 629, Requested 910. Please try again in 32.34s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p16_c0035",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 16,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0014",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p37_c0068",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 37,
+        "section": "6.3 System voice consistency"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p8_c0015",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p1_c0001",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 1,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "first_token_ms": null,
+    "provider_ttft_ms": null,
+    "total_ms": 6147.523400024511,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:58:58Z",
+    "rate_limit_headers": {
+      "retry-after": "33",
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "964",
+      "x-ratelimit-remaining-tokens": "6572",
+      "x-ratelimit-reset-requests": "51m50.399s",
+      "x-ratelimit-reset-tokens": "10.71s"
+    }
+  },
+  {
+    "question_id": "Q11",
+    "category": "unanswerable",
+    "question": "What is the exact financial dollar cost of electricity and GPU hardware used to train the Moshi 7B model?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "rate_limited",
+    "answer_grade": null,
+    "refused": true,
+    "refusal_reason": "{\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 390, Requested 910. Please try again in 18s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "answer": "Service Unavailable: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m1bf5zwwe7mscb6bwt9a3mv7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 390, Requested 910. Please try again in 18s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "1706.03762vv7_p8_c0015",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 8,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p11_c0021",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 11,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p36_c0067",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 36,
+        "section": "6.1 Toxicity analysis"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p33_c0061",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 33,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0003",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "first_token_ms": null,
+    "provider_ttft_ms": null,
+    "total_ms": 5859.950600017328,
+    "retries": 2,
+    "timestamp": "2026-11-13T05:59:13Z",
+    "rate_limit_headers": {
+      "retry-after": "18",
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "964",
+      "x-ratelimit-remaining-tokens": "7610",
+      "x-ratelimit-reset-requests": "51m50.399s",
+      "x-ratelimit-reset-tokens": "23.4s"
+    }
+  },
+  {
+    "question_id": "Q12",
+    "category": "unanswerable",
+    "question": "How does the Transformer model perform when quantized and deployed on an Apple Watch Series 9?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages discuss the quantization of the **Moshi** model (a speech-text foundation model) and the **Helium** model, as well as the performance of **H-Net** and **BPE Transformer** in the context of hierarchical sequence modeling. Specifically, the paper \"Moshi: a speech-text foundation model for real-time dialogue\" details how quantizing Moshi to 4-bit, 3-bit, or 2-bit weights affects its linguistic performance (MMLU benchmark) and audio quality (MOSNet scores) [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 32, Section 5.8 Compressing Moshi and Impact on Speech Quality]. It also notes that the quantization format for Helium is similar to `llama.cpp`'s Q4_0, allowing for efficient inference [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 32, Section 5.8 Compressing Moshi and Impact on Speech Quality].\n\nHowever, none of the retrieved passages mention the **Transformer** model (as defined in \"Attention Is All You Need\") being quantized, nor do they contain any information regarding deployment on an **Apple Watch Series 9**. The \"Dynamic Chunking\" paper compares H-Net and BPE Transformer performance on downstream tasks but does not discuss hardware deployment or quantization for edge devices [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 12, Section Abstract].",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p32_c0059",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p35_c0065",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 35,
+        "section": "6 Safety"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p32_c0060",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 32,
+        "section": "5.8 Compressing Moshi and Impact on Speech Quality"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      }
+    ],
+    "tokens_in": 2585,
+    "tokens_out": 388,
+    "first_token_ms": 3227.3,
+    "provider_ttft_ms": 633.0,
+    "total_ms": 4177.822199999355,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:59:25Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "963",
+      "x-ratelimit-remaining-tokens": "4592",
+      "x-ratelimit-reset-requests": "53m16.799s",
+      "x-ratelimit-reset-tokens": "49.379s"
+    }
+  },
+  {
+    "question_id": "Q13",
+    "category": "naive_retriever_trap",
+    "question": "What is the role of the acoustic Transformer in dynamic chunking sequence modeling?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages from \"Dynamic Chunking for End-to-End Hierarchical Sequence Modeling\" (arXiv 2507.07955v2) describe the **H-Net** architecture, which utilizes **dynamic chunking** to create multi-stage hierarchies for sequence modeling (often over bytes or raw data). [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 21, Section Abstract] The text mentions that H-Nets are designed to operate over higher resolution raw data and that the chunking mechanism acts as an implicit \"tokenizer.\" [Citation: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling, arXiv 2507.07955v2, Page 34, Section References]\n\nHowever, the term **\"acoustic Transformer\"** does not appear in the provided passages from the \"Dynamic Chunking\" paper. The term \"acoustic tokens\" appears in the \"Moshi\" paper, but in the context of a speech-text foundation model with delayed acoustic tokens, not in the context of the dynamic chunking architecture described in the H-Net paper. [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 16, Section 3.4.4 Inner Monologue] There is no information linking an \"acoustic Transformer\" specifically to the dynamic chunking mechanism in the provided text.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2507.07955vv2_p21_c0044",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 21,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p34_c0076",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 34,
+        "section": "References"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p16_c0029",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 16,
+        "section": "3.4.4 Inner Monologue"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p12_c0024",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 12,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2507.07955vv2_p34_c0075",
+        "paper_title": "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling",
+        "page_number": 34,
+        "section": "References"
+      }
+    ],
+    "tokens_in": 2682,
+    "tokens_out": 349,
+    "first_token_ms": 3106.0,
+    "provider_ttft_ms": 565.5,
+    "total_ms": 3954.937800008338,
+    "retries": 1,
+    "timestamp": "2026-11-13T05:59:38Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "962",
+      "x-ratelimit-remaining-tokens": "3206",
+      "x-ratelimit-reset-requests": "54m43.2s",
+      "x-ratelimit-reset-tokens": "59.88s"
+    }
+  },
+  {
+    "question_id": "Q14",
+    "category": "naive_retriever_trap",
+    "question": "How does Mimi's audio codec utilize 8 parallel multi-head attention layers in its residual vector quantizer?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages describe Mimi's architecture, stating that it adds \"Transformer modules in the bottleneck, one right before quantization and one after,\" and that these Transformers have \"8 layers, 8 heads\" [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture]. However, the passages do not state that these layers are \"parallel\" (they are described as stacked layers within a Transformer module), nor do they describe the specific mechanism of how the Residual Vector Quantizer (RVQ) utilizes these attention layers. The RVQ is described as iteratively applying vector quantization to residuals [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1 Architecture], but the text does not link the 8 parallel multi-head attention layers (a concept explicitly defined in the \"Attention Is All You Need\" paper as $h=8$ parallel heads [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 5, Section 3.2.3]) to the internal operation of the RVQ in Mimi. The \"8 layers\" in Mimi are distinct from the \"8 parallel attention layers\" (heads) in the Transformer definition.",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0016",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p5_c0008",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 5,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p12_c0020",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 12,
+        "section": "3.4 Generative audio modeling"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p3_c0005",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      }
+    ],
+    "tokens_in": 2851,
+    "tokens_out": 334,
+    "first_token_ms": 730.9,
+    "provider_ttft_ms": 619.0,
+    "total_ms": 1659.9686000263318,
+    "retries": 0,
+    "timestamp": "2026-11-13T06:00:42Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "961",
+      "x-ratelimit-remaining-tokens": "4530",
+      "x-ratelimit-reset-requests": "56m9.6s",
+      "x-ratelimit-reset-tokens": "26.025s"
+    }
+  },
+  {
+    "question_id": "Q15",
+    "category": "naive_retriever_trap",
+    "question": "Why did Vaswani et al. choose a 12.5 Hz latent frame rate for the Transformer encoder self-attention?",
+    "expected_grade": "refused_correctly",
+    "target_paper": "None",
+    "retrieval_setting": "C",
+    "model_id": "qwen/qwen3.8-27b",
+    "status": "ok",
+    "answer_grade": "refused_correctly",
+    "refused": true,
+    "refusal_reason": "Assistant determined retrieved evidence was insufficient.",
+    "answer": "Based on the retrieved research papers, there is insufficient evidence to answer this question.\n\nThe provided passages do not contain information regarding a \"12.5 Hz latent frame rate\" in the context of the paper \"Attention Is All You Need\" (Vaswani et al.). The paper \"Attention Is All You Need\" discusses the Transformer architecture for sequence transduction (e.g., machine translation) using symbol representations and does not mention audio frame rates or latent frame rates [Citation: Attention Is All You Need, arXiv 1706.03762v7, Page 3, Section 3.1].\n\nThe value \"12.5 Hz\" appears in the paper \"Moshi: a speech-text foundation model for real-time dialogue\" as a hyperparameter for the \"Frame rate\" in the \"Input / Output space\" of the Moshi model [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 8, Section 3.2.2]. However, the retrieved passages from Moshi do not explain *why* this specific frame rate was chosen, nor do they link it to the Transformer encoder self-attention mechanism in the manner described in the question. The Moshi paper mentions that the Mimi encoder/decoder uses an 80ms frame size (which corresponds to 12.5 Hz, as 1000ms / 80ms = 12.5), but the provided text does not explicitly state the rationale for choosing this rate for the self-attention mechanism itself, only that it allows for causal streaming inference [Citation: Moshi: a speech-text foundation model for real-time dialogue, arXiv 2410.00037v1, Page 10, Section 3.3.1].",
+    "citations": [],
+    "retrieved_passages": [
+      {
+        "chunk_id": "2410.00037vv1_p10_c0017",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 10,
+        "section": "3.3.1 Architecture"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p3_c0005",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 3,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p6_c0011",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 6,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "1706.03762vv7_p2_c0004",
+        "paper_title": "Attention Is All You Need",
+        "page_number": 2,
+        "section": "Abstract"
+      },
+      {
+        "chunk_id": "2410.00037vv1_p8_c0013",
+        "paper_title": "Moshi: a speech-text foundation model for real-time dialogue",
+        "page_number": 8,
+        "section": "3.2.2 Pre-training data filtering"
+      }
+    ],
+    "tokens_in": 2651,
+    "tokens_out": 399,
+    "first_token_ms": 816.6,
+    "provider_ttft_ms": 681.5,
+    "total_ms": 1839.6558000240475,
+    "retries": 0,
+    "timestamp": "2026-11-13T06:00:52Z",
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "960",
+      "x-ratelimit-remaining-tokens": "2904",
+      "x-ratelimit-reset-requests": "57m36s",
+      "x-ratelimit-reset-tokens": "38.22s"
+    }
+  }
+]

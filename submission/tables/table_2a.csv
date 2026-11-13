@@ -1,0 +1,6 @@
+Scenario,Real or stand-in,Requests sent,Duration (s),Offered rate (per min),First token p50 / p95 / p99 (ms),Total time p50 / p95 / p99 (ms)
+Steady Load,stand-in,10,50.0,12,318.5 / 14610.2 / 16626.4,4097.2 / 11408.3 / 16180.4
+Sudden Burst,stand-in,25,5.0,300,300.0 / 366.1 / 369.9,8650.8 / 16857.2 / 19572.2
+Sustained Overload,stand-in,35,35.0,60,338.7 / 500.8 / 517.4,4112.6 / 4248.4 / 4265.0
+Rpm Limit Halved,stand-in,20,50.0,24,453.1 / 499.1 / 503.2,4091.5 / 4161.5 / 4166.7
+Daily Budget Exhausted,stand-in,15,3.0,300,N/A (0 emitted),31.5 / 56.7 / 83.3

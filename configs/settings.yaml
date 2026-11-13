@@ -1,0 +1,22 @@
+# System-wide Settings for The Relay
+
+app:
+  name: "The Relay"
+  version: "1.0.0"
+  provider_mode: "stand-in"       # "real" or "stand-in"
+  host: "127.0.0.1"
+  port: 8000
+
+models:
+  primary: "llama-3.3-70b-versatile"
+  instant: "llama-3.1-8b-instant"
+
+reliability:
+  max_concurrency: 5
+  request_deadline_sec: 30.0
+  rate_limit_rpm: 30
+  rate_limit_tpm: 6000
+  rate_limit_rpd: 14400
+  circuit_breaker_failures: 4
+  circuit_breaker_recovery_sec: 5.0
+

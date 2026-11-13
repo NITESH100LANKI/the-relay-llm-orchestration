@@ -1,0 +1,36 @@
+{
+  "qwen/qwen3.8-27b": {
+    "model_id": "qwen/qwen3.8-27b",
+    "status_code": 200,
+    "non_stream_latency_ms": 965.3,
+    "streaming_ttft_ms": 439.5,
+    "streaming_total_ms": 607.9,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "998",
+      "x-ratelimit-remaining-tokens": "7810",
+      "x-ratelimit-reset-requests": "2m52.8s",
+      "x-ratelimit-reset-tokens": "1.425s"
+    },
+    "content_sync": "The formula for Scaled Dot-Product Attention, as defined in the paper *Attention Is All You Need* (Vaswani et al., 2017), is:\n\n$$\n\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V\n$$\n\nWhere:\n*   $Q$ is the **Query** matrix.\n*   $K$ is the **Key** matrix.\n*   $V$ is the **Value** matrix.\n*   $d_k$ is the dimension of the keys (and queries).\n\nThe scaling factor $\\frac{1}{\\sqrt{d",
+    "content_stream": "The audio codec used in Moshi is **Mimi** (specifically the Mimi-16k variant).\n\nIts bitrate is **1.32 kbps** (kilobits per second).\n\n*Note: Mimi is a neural audio codec developed by Kyutai (the creators of Moshi) that achieves high-quality speech compression at very low bitrates, significantly lower than traditional codecs like Opus or AAC.*"
+  },
+  "openai/gpt-oss-120b": {
+    "model_id": "openai/gpt-oss-120b",
+    "status_code": 200,
+    "non_stream_latency_ms": 1147.1,
+    "streaming_ttft_ms": null,
+    "streaming_total_ms": 1181.1,
+    "headers": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "999",
+      "x-ratelimit-remaining-tokens": "7753",
+      "x-ratelimit-reset-requests": "1m26.4s",
+      "x-ratelimit-reset-tokens": "1.852s"
+    },
+    "content_sync": "**Scaled dot\u2011product attention**\n\n\\[\n\\text{Attention}(Q,K,V)=\\operatorname{softmax}\\!\\left(\\frac{QK^{\\top}}{\\sqrt{d_k}}\\right)V\n\\]\n\n- **\\(Q\\)**: query matrix (shape\u202f\\(n_q \\times d_k\\))  \n- **\\(K\\)**: key matrix (",
+    "content_stream": ""
+  }
+}

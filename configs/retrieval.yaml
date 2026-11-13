@@ -1,0 +1,31 @@
+# Retrieval Configurations for The Relay
+
+presets:
+  A:
+    name: "Configuration A"
+    description: "Compact chunking, low passage count, no reranking"
+    chunk_size: 300
+    chunk_overlap: 50
+    top_k: 3
+    rerank_enabled: false
+    retrieval_mode: "hybrid"
+
+  B:
+    name: "Configuration B"
+    description: "Generous context window, 5 passages, no reranking (Baseline)"
+    chunk_size: 500
+    chunk_overlap: 100
+    top_k: 5
+    rerank_enabled: false
+    retrieval_mode: "hybrid"
+
+  C:
+    name: "Configuration C"
+    description: "Generous context window, 5 passages, Hybrid RRF Reranking enabled"
+    chunk_size: 500
+    chunk_overlap: 100
+    top_k: 5
+    rerank_enabled: true
+    retrieval_mode: "hybrid"
+    rrf_k: 60
+
