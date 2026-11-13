@@ -59,7 +59,7 @@ the-relay/
 │   ├── load_testing/        # Asyncio load-testing harness (5 scenarios + retry evaluation)
 │   └── analysis/            # Table & metrics generators
 ├── submission/
-│   ├── results.csv          # Exactly one row per tested request (180 requests)
+│   ├── results.csv          # Exactly one row per tested request (170 requests)
 │   ├── report.md            # Written final report with exact headings
 │   ├── report.pdf           # 2-Page final report compiled via ReportLab
 │   ├── assistant_prompts.md # Log of engineering interaction prompts
