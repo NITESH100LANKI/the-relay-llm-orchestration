@@ -221,3 +221,4 @@ Ensure all 28 automated tests pass and all 45 real Groq benchmark records are pr
 - **15 Curated Benchmark Questions**: Handcrafted test suite covering technical specifications, multi-paper comparisons, out-of-scope queries, and adversarial traps.
 - **Matched Retry Experiment Methodology**: Rigorous experimental design proving that retries exacerbate structural overload (+176% API calls, 19x p95 latency surge).
 - **ReportLab 2-Page PDF Compiler**: Custom PDF generation script strictly conforming to the 2-page brief limit.
+
