@@ -160,8 +160,12 @@ python scripts/generate_pdf_report.py
 
 ---
 
-## 6. Security & Grounding Policy
-- **Zero Hallucination / Epistemic Honesty**: If retrieved passages do not contain adequate support, the system deterministically refuses to answer.
-- **No Parametric Knowledge**: Generation is strictly confined to retrieved passages.
-- **No Committed Secrets**: `.env` is excluded by `.gitignore`. API keys are never printed, logged, or exposed.
+## 6. Grounding, Verification & Security
+
+- **Evidence-grounded generation:** The LLM is instructed to answer exclusively using retrieved research-paper passages.
+- **Citation verification:** Generated citations are checked against source metadata, including paper title, arXiv ID, version and page number.
+- **Safe refusal:** Unsupported or unverifiable claims are replaced with a deterministic refusal response.
+- **Pre-delivery verification:** The complete generated response is buffered internally and verified before being delivered to users through SSE.
+- **API security:** API credentials are stored in environment variables, `.env` is excluded through `.gitignore`, and sensitive credentials are not exposed in application logs.
+- **Controlled inference:** Configurable rate limiting, bounded retries, concurrency control and circuit breaking help manage provider failures and traffic spikes.
 
