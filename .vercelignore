@@ -1,0 +1,28 @@
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Pytest and Caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build & Egg Artifacts
+build/
+dist/
+*.egg-info/
+
+# Tests & Experiments (not needed for production inference)
+tests/
+experiments/
+logs/
+scripts/
+
+# Git & Documentation
+.git/
+.github/
+The_Relay_Assignment_Brief.pdf
+*.bak
